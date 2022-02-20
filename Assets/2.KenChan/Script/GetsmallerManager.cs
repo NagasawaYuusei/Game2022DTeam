@@ -11,6 +11,10 @@ public class GetsmallerManager : MonoBehaviour
     [Tooltip("プレイヤーのScaleXを保存")] float _saveX = 0;
 
     [Tooltip("プレイヤーが大きくなっているか判別")] bool _scaleCheck = false;
+
+    [Tooltip("このスキルが使えるかどうか")] bool _isSmall = true;
+
+    public bool IsSmall { get { return _isSmall; } set { _isSmall = value; }}
     // Start is called before the first frame update
     void Start()
     {
@@ -48,15 +52,18 @@ public class GetsmallerManager : MonoBehaviour
     /// <param name="context"></param>
     public void PlayerSmallInput(InputAction.CallbackContext context)
     {
-        if (context.started && !_scaleCheck)
+        if(_isSmall)
         {
-            ChangeScale();
-            _scaleCheck = true;
-        }
-        else if(context.started && _scaleCheck)
-        {
-            ReChangeScale();
-            _scaleCheck = false;
-        }
+            if (context.started && !_scaleCheck)
+            {
+                ChangeScale();
+                _scaleCheck = true;
+            }
+            else if (context.started && _scaleCheck)
+            {
+                ReChangeScale();
+                _scaleCheck = false;
+            }
+        }  
     }
 }
