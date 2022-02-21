@@ -12,7 +12,7 @@ public class GetsmallerManager : MonoBehaviour
 
     [Tooltip("プレイヤーが大きくなっているか判別")] bool _scaleCheck = false;
 
-    [Tooltip("このスキルが使えるかどうか")] bool _isSmall = true;
+    [SerializeField,Tooltip("このスキルが使えるかどうか")]bool _isSmall = true;
 
     public bool IsSmall { get { return _isSmall; } set { _isSmall = value; }}
     // Start is called before the first frame update
