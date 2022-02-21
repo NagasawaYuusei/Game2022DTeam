@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class GetsmallerManager : MonoBehaviour
 {
     [Header("小さくなった時の大きさ")]
     [SerializeField, Tooltip("小さくなった時の縦の長さ")] float _changeY = 0;
     [SerializeField, Tooltip("小さくなった時の横の長さ")] float _changeX = 0;
+
+    [Header("変更中の時間")]
+    [SerializeField, Tooltip("大きさの変更時間")] float _changeTime;
 
     [Tooltip("プレイヤーのScaleYを保存")] float _saveY = 0;
     [Tooltip("プレイヤーのScaleXを保存")] float _saveX = 0;
@@ -34,7 +38,7 @@ public class GetsmallerManager : MonoBehaviour
     /// </summary>
     void ChangeScale()
     {
-        gameObject.transform.localScale = new Vector3(_changeX, _changeY, 1);
+        gameObject.transform.DOScale(new Vector3(_changeX, _changeY, 1), _changeTime);
     }
 
     /// <summary>
@@ -42,7 +46,7 @@ public class GetsmallerManager : MonoBehaviour
     /// </summary>
     void ReChangeScale()
     {
-        gameObject.transform.localScale = new Vector3(_saveX, _saveY, 1);
+        gameObject.transform.DOScale(new Vector3(_saveX, _saveY, 1), _changeTime);
     }
 
     /// <summary>
