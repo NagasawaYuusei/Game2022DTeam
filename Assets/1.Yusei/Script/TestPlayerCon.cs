@@ -13,10 +13,17 @@ public class TestPlayerCon : MonoBehaviour
     [Tooltip("移動速度"), SerializeField] float _moveSpeed;
     [Tooltip("ジャンプスピード"), SerializeField] float _jumpSpeed;
     [SerializeField] float _shakeTime;
+    [SerializeField] float _groundLength;
+    [SerializeField] LayerMask _layerMask;
 
     void Start()
     {
         StartSetUp();
+    }
+
+    private void Update()
+    {
+        IsGrounded();
     }
 
     void FixedUpdate()
@@ -48,6 +55,13 @@ public class TestPlayerCon : MonoBehaviour
         _rb.velocity = Vector2.up * _jumpSpeed;
     }
 
+    bool IsGrounded()
+    {
+        bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
+        Debug.DrawRay(transform.position, Vector2.down * _groundLength);
+        return jumpray;
+    }
+
     /// <summary>
     /// InputSystem
     /// 移動
@@ -72,7 +86,7 @@ public class TestPlayerCon : MonoBehaviour
     /// <param name="context"></param>
     public void PlayerJumpInput(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(context.started && IsGrounded())
         {
             PlayerJump();
             StartCoroutine(Vibration(1, 1, _shakeTime));
@@ -87,8 +101,11 @@ public class TestPlayerCon : MonoBehaviour
     )
     {
         var gamepad = Gamepad.current;
-        gamepad.SetMotorSpeeds(lowFrequency, highFrequency);
-        yield return new WaitForSeconds(time); // 1 秒間振動させる
-        gamepad.SetMotorSpeeds(0, 0);
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(lowFrequency, highFrequency);
+            yield return new WaitForSeconds(time); // 1 秒間振動させる
+            gamepad.SetMotorSpeeds(0, 0);
+        }
     }
 }
