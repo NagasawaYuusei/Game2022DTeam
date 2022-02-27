@@ -38,9 +38,8 @@ public class SuperJump : MonoBehaviour
         {
             if (_isJumped && _jumpCount < _maxJumpCount)
             {
-                Debug.Log("jump");
                 _jumpCount++;
-                _player.GetComponent<TestPlayerCon>().PlayerJump();
+                _player.GetComponent<TamariTestPlayerCon>().PlayerJump();
             }
         }
     }
