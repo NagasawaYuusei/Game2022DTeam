@@ -218,9 +218,9 @@ GameObject:
   - component: {fileID: 353245319}
   - component: {fileID: 353245318}
   - component: {fileID: 353245317}
-  - component: {fileID: 353245315}
   - component: {fileID: 353245316}
   - component: {fileID: 353245321}
+  - component: {fileID: 353245322}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -228,21 +228,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &353245315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353245314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39509a598d122749a0828c44e2391cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 5
-  _jumpSpeed: 5
-  _shakeTime: 0.2
 --- !u!50 &353245316
 Rigidbody2D:
   serializedVersion: 4
@@ -371,6 +356,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpCount: 0
   _maxJumpCount: 3
+--- !u!114 &353245322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353245314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc029857a685964ead979509ca9b0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 0
+  _jumpSpeed: 0
+  _shakeTime: 0
 --- !u!1 &393135521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1037,7 @@ PrefabInstance:
     - target: {fileID: 4167236470396227706, guid: b6f7bd4afc9be094fa27217cef7e2207, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 353245315}
+      objectReference: {fileID: 0}
     - target: {fileID: 4167236470396227706, guid: b6f7bd4afc9be094fa27217cef7e2207, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
