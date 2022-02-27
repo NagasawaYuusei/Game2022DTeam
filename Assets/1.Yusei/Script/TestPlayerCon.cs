@@ -43,7 +43,7 @@ public class TestPlayerCon : MonoBehaviour
     /// <summary>
     /// プレイヤーのジャンプ処理
     /// </summary>
-    void PlayerJump()
+    public void PlayerJump()
     {
         _rb.velocity = Vector2.up * _jumpSpeed;
     }
