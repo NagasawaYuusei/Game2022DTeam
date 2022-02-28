@@ -15,7 +15,8 @@ public class TestPlayerCon : MonoBehaviour
     [SerializeField] float _shakeTime;
     [SerializeField] float _groundLength;
     [SerializeField] LayerMask _layerMask;
-
+    [SerializeField] bool _isGroundedVisible;
+ 
     void Start()
     {
         StartSetUp();
@@ -24,6 +25,7 @@ public class TestPlayerCon : MonoBehaviour
     private void Update()
     {
         IsGrounded();
+        PlayerJump();
     }
 
     void FixedUpdate()
@@ -44,7 +46,7 @@ public class TestPlayerCon : MonoBehaviour
     /// </summary>
     void PlayerMove()
     {
-        _rb.velocity = new Vector2(_moveSpeed * _playerVec.x, _rb.velocity.y);
+        _rb.velocity = new Vector2(_moveSpeed * InputSystemManager.Instance._vec1.x, _rb.velocity.y);
     }
 
     /// <summary>
@@ -52,7 +54,11 @@ public class TestPlayerCon : MonoBehaviour
     /// </summary>
     void PlayerJump()
     {
-        _rb.velocity = Vector2.up * _jumpSpeed;
+        if(InputSystemManager.Instance._isJump &&IsGrounded())
+        {
+            _rb.velocity = Vector2.up * _jumpSpeed;
+            StartCoroutine(Vibration(1, 1, _shakeTime));
+        }
     }
 
     bool IsGrounded()
@@ -60,37 +66,6 @@ public class TestPlayerCon : MonoBehaviour
         bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
         Debug.DrawRay(transform.position, Vector2.down * _groundLength);
         return jumpray;
-    }
-
-    /// <summary>
-    /// InputSystem
-    /// ˆÚ“®
-    /// </summary>
-    /// <param name="context"></param>
-    public void PlayerMoveInput(InputAction.CallbackContext context)
-    {
-        if(context.performed)
-        {
-            _playerVec = context.ReadValue<Vector2>();
-        }
-        else if(context.canceled)
-        {
-            _playerVec = Vector2.zero;
-        }
-    }
-
-    /// <summary>
-    /// InputSystem
-    /// ƒWƒƒƒ“ƒv
-    /// </summary>
-    /// <param name="context"></param>
-    public void PlayerJumpInput(InputAction.CallbackContext context)
-    {
-        if(context.started && IsGrounded())
-        {
-            PlayerJump();
-            StartCoroutine(Vibration(1, 1, _shakeTime));
-        }
     }
 
     private static IEnumerator Vibration
