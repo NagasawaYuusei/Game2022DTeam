@@ -303,7 +303,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.371328, y: 1}
+    m_SensorSize: {x: 1.5983012, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1199,6 +1199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 6003bd96d30b91644942a96dc74c91c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8300531333789715683, guid: 6003bd96d30b91644942a96dc74c91c6, type: 3}
       propertyPath: m_Name
       value: "\u8EAB\u4F53"
@@ -1771,6 +1775,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 2
+  _isGroundedVisible: 0
 --- !u!50 &2055868765
 Rigidbody2D:
   serializedVersion: 4
