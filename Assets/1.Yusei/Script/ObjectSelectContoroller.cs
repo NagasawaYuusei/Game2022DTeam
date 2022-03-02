@@ -2,7 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectSelectContoroller : MonoBehaviour
+public abstract class ObjectSelectContoroller : MonoBehaviour
 {
-    
+    void Update()
+    {
+        
+    }
+
+    void Select()
+    {
+
+    }
 }
