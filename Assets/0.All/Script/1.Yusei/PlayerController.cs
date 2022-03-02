@@ -2,19 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// プレイヤーコントローラーテスト
-/// </summary>
-public class TestPlayerCon : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    [Tooltip("プレイヤーのRb")]Rigidbody2D _rb;
+    [Tooltip("プレイヤーのRb")] Rigidbody2D _rb;
     [Header("設定項目")]
     [Tooltip("移動速度"), SerializeField] float _moveSpeed;
     [Tooltip("ジャンプスピード"), SerializeField] float _jumpSpeed;
-    [SerializeField] float _shakeTime;
-    [SerializeField] float _groundLength;
-    [SerializeField] LayerMask _layerMask;
-    [SerializeField] bool _isGroundedVisible;
+    [Tooltip("ジャンプ時のコントローラー振動"), SerializeField] float _shakeTime;
+    [Tooltip("設置判定距離"), SerializeField] float _groundLength;
+    [Tooltip("地面のレイヤー"), SerializeField] LayerMask _layerMask;
+    [Tooltip("設置判定をオンにするかどうか"), SerializeField] bool _isGroundedVisible;
 
     void Start()
     {
@@ -40,13 +37,17 @@ public class TestPlayerCon : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
+    /// <summary>
+    /// 設置判定の可視化
+    /// </summary>
     void Visible()
     {
-        if(_isGroundedVisible)
+        if (_isGroundedVisible)
         {
             IsGrounded();
         }
     }
+
     /// <summary>
     /// プレイヤーの移動処理
     /// </summary>
@@ -61,21 +62,32 @@ public class TestPlayerCon : MonoBehaviour
     void PlayerJump()
     {
         //押してる時間に応じてジャンプ
-        if(InputSystemManager.Instance._isJump &&IsGrounded())
+        if (InputSystemManager.Instance._isJump && IsGrounded())
         {
             _rb.velocity = Vector2.up * _jumpSpeed;
             StartCoroutine(Vibration(1, 1, _shakeTime));
         }
     }
 
+    /// <summary>
+    /// 設置判定
+    /// </summary>
+    /// <returns></returns>
     bool IsGrounded()
     {
         bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
         Debug.DrawRay(transform.position, Vector2.down * _groundLength);
-        if(!jumpray) InputSystemManager.Instance._isJump = false;
+        if (!jumpray) InputSystemManager.Instance._isJump = false;
         return jumpray;
     }
 
+    /// <summary>
+    /// コントローラー振動
+    /// </summary>
+    /// <param name="lowFrequency"></param>
+    /// <param name="highFrequency"></param>
+    /// <param name="time"></param>
+    /// <returns></returns>
     private static IEnumerator Vibration
     (
         float lowFrequency, // 低周波（左）モーターの強さ（0.0 ～ 1.0）
