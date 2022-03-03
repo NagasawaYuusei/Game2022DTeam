@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("設置判定距離"), SerializeField] float _groundLength;
     [Tooltip("地面のレイヤー"), SerializeField] LayerMask _layerMask;
     [Tooltip("設置判定をオンにするかどうか"), SerializeField] bool _isGroundedVisible;
+    SuperJump _sj;
 
     void Start()
     {
@@ -59,9 +60,12 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// プレイヤーのジャンプ処理 改善予定
     /// </summary>
-    void PlayerJump()
+    public void PlayerJump()
     {
-        //押してる時間に応じてジャンプ
+        if(TryGetComponent<SuperJump>(out _sj))
+        {
+            return;
+        }
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
             _rb.velocity = Vector2.up * _jumpSpeed;
@@ -73,11 +77,15 @@ public class PlayerController : MonoBehaviour
     /// 設置判定
     /// </summary>
     /// <returns></returns>
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
         Debug.DrawRay(transform.position, Vector2.down * _groundLength);
         if (!jumpray) InputSystemManager.Instance._isJump = false;
+        if(jumpray && !_sj)
+        {
+            _sj.JumpCount = 0;
+        }
         return jumpray;
     }
 
