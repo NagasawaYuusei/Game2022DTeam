@@ -11,7 +11,7 @@ public class Psychokinesis : ObjectSelectContoroller
     [Header("設定項目")]
     [Tooltip("移動速度"), SerializeField] float _blockMoveSpeed;
 
-    [Tooltip("このスキルが使えるかどうか")] bool _isPsychokinesis = true;
+    [Tooltip("このスキルが使えるかどうか")] bool _isPsychokinesis = false;
 
     Color _originColor;
 
