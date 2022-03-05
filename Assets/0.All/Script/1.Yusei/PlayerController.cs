@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("設置判定距離"), SerializeField] float _groundLength;
     [Tooltip("地面のレイヤー"), SerializeField] LayerMask _layerMask;
     [Tooltip("設置判定をオンにするかどうか"), SerializeField] bool _isGroundedVisible;
-    SuperJump _sj;
+    bool _on;
+
+    public bool On { set { _on = value; } }
 
     void Start()
     {
@@ -54,23 +56,34 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void PlayerMove()
     {
+        if (GetComponent<MindControl>().IsNowControl || GetComponent<Psychokinesis>().IsNowControl)
+        {
+            _rb.velocity = Vector2.zero;
+            return;
+        }
         _rb.velocity = new Vector2(InputSystemManager.Instance._vec1.x * _moveSpeed, _rb.velocity.y);
     }
 
     /// <summary>
     /// プレイヤーのジャンプ処理 改善予定
     /// </summary>
-    public void PlayerJump()
+    void PlayerJump()
     {
-        if(TryGetComponent<SuperJump>(out _sj))
+        if (GetComponent<MindControl>().IsNowControl) return;
+        if (GetComponent<SuperJump>().enabled)
         {
             return;
         }
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
-            _rb.velocity = Vector2.up * _jumpSpeed;
-            StartCoroutine(Vibration(1, 1, _shakeTime));
+            JumpMethod();
         }
+    }
+
+    public void JumpMethod()
+    {
+        _rb.velocity = Vector2.up * _jumpSpeed;
+        StartCoroutine(Vibration(1, 1, _shakeTime));
     }
 
     /// <summary>
@@ -81,11 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
         Debug.DrawRay(transform.position, Vector2.down * _groundLength);
-        if (!jumpray) InputSystemManager.Instance._isJump = false;
-        if(jumpray && !_sj)
-        {
-            _sj.JumpCount = 0;
-        }
+        if (!jumpray && !GetComponent<SuperJump>().enabled) InputSystemManager.Instance._isJump = false;
         return jumpray;
     }
 

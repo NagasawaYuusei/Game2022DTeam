@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Psychokinesis : MonoBehaviour
+public class Psychokinesis : ObjectSelectContoroller
 {
-    [SerializeField] GameObject _block = default;
+    bool on = false;
+    GameObject _block = default;
+    bool _isNowControl;
     [Tooltip("ブロックのRb")] Rigidbody2D _blockRb;
     [Tooltip("InputSystemの移動入力")] Vector2 _blockVec;
     [Header("設定項目")]
@@ -11,7 +13,10 @@ public class Psychokinesis : MonoBehaviour
 
     [Tooltip("このスキルが使えるかどうか")] bool _isPsychokinesis = true;
 
+    Color _originColor;
+
     public bool IsPsychokinesis { get { return _isPsychokinesis; } set { _isPsychokinesis = value; } }
+    public bool IsNowControl { get { return _isNowControl; } }
 
     private void Update()
     {
@@ -22,27 +27,70 @@ public class Psychokinesis : MonoBehaviour
     /// </summary>
     void PsychokinesisMove()
     {
-        if (_isPsychokinesis)
+        if (!_isPsychokinesis) return;
+        if (InputSystemManager.Instance._isSkill && !_isNowControl)
         {
-            _blockRb = GetComponent<Rigidbody2D>();
-            _blockRb.velocity = new Vector2(_blockMoveSpeed * _blockVec.x, _blockMoveSpeed * _blockRb.velocity.y);
+            Select("Object");
+            _block = First();
+            _block.GetComponent<Rigidbody2D>().gravityScale = 0;
+            _block.GetComponent<Rigidbody2D>().mass = 1;
+            _block.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            _originColor = _block.GetComponent<SpriteRenderer>().color;
+            _block.GetComponent<SpriteRenderer>().color = Color.yellow;
+            _isNowControl = true;
+            InputSystemManager.Instance._isSkill = false;
+        }
+        else if (InputSystemManager.Instance._isSkill && _isNowControl)
+        {
+            _block.GetComponent<SpriteRenderer>().color = _originColor;
+            _isNowControl = false;
+            _block.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            _block.GetComponent<Rigidbody2D>().gravityScale = 1;
+            _block.GetComponent<Rigidbody2D>().mass = 100;
+            _block.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+            InputSystemManager.Instance._isSkill = false;
+        }
+
+        if (_isNowControl)
+        {
+            if (InputSystemManager.Instance._vec2.y > 0 && !on)
+            {
+                _block.GetComponent<Rigidbody2D>().gravityScale = 1;
+                _block.GetComponent<Rigidbody2D>().mass = 100;
+                _block.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+                _block.GetComponent<SpriteRenderer>().color = _originColor;
+                _block = Change(1);
+                _block.GetComponent<Rigidbody2D>().gravityScale = 0;
+                _block.GetComponent<Rigidbody2D>().mass = 1;
+                _block.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                _originColor = _block.GetComponent<SpriteRenderer>().color;
+                _block.GetComponent<SpriteRenderer>().color = Color.yellow;
+                on = true;
+            }
+            else if (InputSystemManager.Instance._vec2.y < 0 && !on)
+            {
+                _block.GetComponent<Rigidbody2D>().gravityScale = 1;
+                _block.GetComponent<Rigidbody2D>().mass = 100;
+                _block.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+                _block.GetComponent<SpriteRenderer>().color = _originColor;
+                _block = Change(-1);
+                _block.GetComponent<Rigidbody2D>().gravityScale = 0;
+                _block.GetComponent<Rigidbody2D>().mass = 1;
+                _block.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                _originColor = _block.GetComponent<SpriteRenderer>().color;
+                _block.GetComponent<SpriteRenderer>().color = Color.yellow;
+                on = true;
+            }
+            else if (InputSystemManager.Instance._vec2.y == 0 && on)
+            {
+                on = false;
+            }
+            ObjectMove();
         }
     }
 
-    /// <summary>
-    /// InputSystem
-    /// ブロックの移動
-    /// </summary>
-    /// <param name="context"></param>
-    public void BlockMoveInput(InputAction.CallbackContext context)
+    void ObjectMove()
     {
-        if (context.performed)
-        {
-            _blockVec = context.ReadValue<Vector2>();
-        }
-        else if (context.canceled)
-        {
-            _blockVec = Vector2.zero;
-        }
+        _block.GetComponent<Rigidbody2D>().velocity = InputSystemManager.Instance._vec1 * _blockMoveSpeed;
     }
 }

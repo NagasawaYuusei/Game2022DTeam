@@ -22,6 +22,18 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
         }
     }
 
+    public void PlayerStickInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _vec2 = context.ReadValue<Vector2>();
+        }
+        else if (context.canceled)
+        {
+            _vec2 = Vector2.zero;
+        }
+    }
+
     public void PlayerJumpInput(InputAction.CallbackContext context)
     {
         if (context.started)
