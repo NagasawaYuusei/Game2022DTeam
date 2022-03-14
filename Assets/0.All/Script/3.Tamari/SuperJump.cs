@@ -12,6 +12,7 @@ public class SuperJump : MonoBehaviour
     [Tooltip("‚±‚ÌƒXƒLƒ‹‚ªŽg‚¦‚é‚©‚Ç‚¤‚©")] bool _isJumped = true;
     public bool IsSuperJump { get { return _isJumped; } set { _isJumped = value; } }
     public int JumpCount { set { _jumpCount = value; } }
+    [SerializeField] string GroundTagName;
     void Start()
     {
         _jumpCount = 0;
@@ -29,12 +30,23 @@ public class SuperJump : MonoBehaviour
     /// <param name="context"></param>
     void Jump()
     {
-        if (_jumpCount < _maxJumpCount && _isJumped && InputSystemManager.Instance._isJump
-            && _player.GetComponent<PlayerController>().IsGrounded())
+        if (_isJumped && _jumpCount < _maxJumpCount && InputSystemManager.Instance._isJump)
         {
             _jumpCount++;
-            _player.GetComponent<PlayerController>().PlayerJump();
+            _player.GetComponent<PlayerController>().JumpMethod();
+            InputSystemManager.Instance._isJump = false;
         }
+        if(_jumpCount == _maxJumpCount)
+        {
+            InputSystemManager.Instance._isJump = false;
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _jumpCount = 0;
+        }
     }
 }
