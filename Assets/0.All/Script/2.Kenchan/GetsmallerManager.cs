@@ -25,6 +25,10 @@ public class GetsmallerManager : MonoBehaviour
         SaveScale();
     }
 
+    void Update()
+    {
+        Small();
+    }
     /// <summary>
     /// スタート時にオブジェクトの大きさを保存
     /// </summary>
@@ -32,6 +36,23 @@ public class GetsmallerManager : MonoBehaviour
     {
         _saveY = gameObject.transform.localScale.y;
         _saveX = gameObject.transform.localScale.x;
+    }
+
+    void Small()
+    {
+        if (!_isSmall) return;
+        if(InputSystemManager.Instance._isSkill && !_scaleCheck)
+        {
+            ChangeScale();
+            InputSystemManager.Instance._isSkill = false;
+            _scaleCheck = true;
+        }
+        else if(InputSystemManager.Instance._isSkill && _scaleCheck)
+        {
+            ReChangeScale();
+            InputSystemManager.Instance._isSkill = false;
+            _scaleCheck = false;
+        }
     }
     /// <summary>
     /// プレイヤーが小さくなる処理
@@ -47,27 +68,5 @@ public class GetsmallerManager : MonoBehaviour
     void ReChangeScale()
     {
         gameObject.transform.DOScale(new Vector3(_saveX, _saveY, 1), _changeTime);
-    }
-
-    /// <summary>
-    /// InputSystem
-    /// 小さくなる
-    /// </summary>
-    /// <param name="context"></param>
-    public void PlayerSmallInput(InputAction.CallbackContext context)
-    {
-        if(_isSmall)
-        {
-            if (context.started && !_scaleCheck)
-            {
-                ChangeScale();
-                _scaleCheck = true;
-            }
-            else if (context.started && _scaleCheck)
-            {
-                ReChangeScale();
-                _scaleCheck = false;
-            }
-        }  
     }
 }
