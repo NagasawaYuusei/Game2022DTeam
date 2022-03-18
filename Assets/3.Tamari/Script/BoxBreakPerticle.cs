@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxBreakPerticle : MonoBehaviour
+public class Particle : MonoBehaviour
 {
     [SerializeField] ParticleSystem _particle;
     [SerializeField] Renderer _rend;
