@@ -13,6 +13,7 @@ public class TamariTestPlayerCon : MonoBehaviour
     [Tooltip("移動速度"), SerializeField] float _moveSpeed;
     [Tooltip("ジャンプスピード"), SerializeField] float _jumpSpeed;
     [SerializeField] float _shakeTime;
+    [Tooltip("ジャンプパーティクル"), SerializeField] ParticleSystem _jumpParticle;
 
     void Start()
     {
@@ -75,6 +76,7 @@ public class TamariTestPlayerCon : MonoBehaviour
         if(context.started)
         {
             PlayerJump();
+            _jumpParticle.Play();
             StartCoroutine(Vibration(1, 1, _shakeTime));
         }
     }
