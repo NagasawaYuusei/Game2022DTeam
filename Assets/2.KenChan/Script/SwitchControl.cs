@@ -7,9 +7,6 @@ public class SwitchControl : MonoBehaviour
     [Header("スイッチ本体")]
     [SerializeField, Tooltip("ボタン本体")] GameObject _swichBase;
 
-    [Header("スイッチボタン")]
-    [SerializeField, Tooltip("ボタン押すところ")] GameObject _button;
-
     [Tooltip("アニメーション")] Animation _anim;
     void Start()
     {
@@ -19,7 +16,10 @@ public class SwitchControl : MonoBehaviour
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.CompareTag("Player"))
+        {
             Debug.Log("当たった");
-            _anim.Play("DownSwich");
+            //_anim.Play("DownSwich");
+        }   
     }
 }
