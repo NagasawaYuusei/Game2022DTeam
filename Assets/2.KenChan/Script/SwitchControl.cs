@@ -4,22 +4,33 @@ using UnityEngine;
 
 public class SwitchControl : MonoBehaviour
 {
-    [Header("スイッチ本体")]
+    [Header("ボタン本体")]
     [SerializeField, Tooltip("ボタン本体")] GameObject _swichBase;
 
-    [Tooltip("アニメーション")] Animation _anim;
+    Animator _anim;
     void Start()
     {
-        _anim = _swichBase.GetComponent<Animation>();
+        _anim = _swichBase.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("当たった");
-            //_anim.Play("DownSwich");
-        }   
+
+            _anim.SetBool("ON",true);
+        }
+    }
+
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("離れた");
+
+            _anim.SetBool("ON", false);
+        }
     }
 }
