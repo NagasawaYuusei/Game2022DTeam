@@ -22,4 +22,15 @@ public class SwitchControl : MonoBehaviour
             _anim.SetBool("ON",true);
         }
     }
+
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("—£‚ê‚½");
+
+            _anim.SetBool("ON", false);
+        }
+    }
 }
