@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.AI;
 
 public class TestEnemy : MonoBehaviour
 {
@@ -11,11 +12,17 @@ public class TestEnemy : MonoBehaviour
 
     [Tooltip("エネミーのRigidbody2D")] Rigidbody2D _rb2d;
     [Tooltip("プレイヤーを取得")] GameObject _player;
+    [Tooltip("プレイヤーの位置を取得")] Transform _playerPos;
+
+    [Tooltip("NavMeshを使用するための変数")] NavMeshAgent _navMeshAgent;
     // Start is called before the first frame update
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _player = GameObject.FindWithTag("Player");
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+
+
     }
 
     void Update()
@@ -37,6 +44,16 @@ public class TestEnemy : MonoBehaviour
         {
             _isInsideCamera = false;
         }
+    }
+
+    /// <summary>
+    /// プレイヤーを追跡する
+    /// </summary>
+    public void PlayerTracking()
+    {
+        if (GameManager.Instance._playerHideSkillSingnal) _navMeshAgent.destination = _playerPos.position;
+        else if (!GameManager.Instance._playerHideSkillSingnal) ;
+
     }
 
     /// <summary>
