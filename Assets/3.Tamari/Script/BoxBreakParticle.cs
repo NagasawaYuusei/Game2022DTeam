@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Particle : MonoBehaviour
+public class BoxBreakParticle : MonoBehaviour
 {
     [SerializeField] ParticleSystem _particle;
     [SerializeField] Renderer _rend;
     [Tooltip("オブジェクトが消えるまでの時間"), SerializeField] float _destroyTime = 2f;
-    // Start is called before the first frame update
+   
+    /// <summary>
+    /// Startでのセットアップ
+    /// </summary>
+    /// <param name="context"></param>
     void Start()
     {
         _rend = GetComponent<Renderer>();
         _rend.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// 箱が壊れた時にパーティクルを出す
+    /// </summary>
+    /// <param name="context"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
