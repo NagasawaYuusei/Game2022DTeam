@@ -17,4 +17,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         
     }
+
+    /// <summary>
+    /// プレイヤーのHideSkillの使用したかを受け取る
+    /// </summary>
+    /// <param name="check"></param>
+    public bool _playerHideSkillSingnal;
+    public void PlayerHideSkillSignal(bool check)
+    {
+        if (check == false) _playerHideSkillSingnal = false;
+        else if (check == true) _playerHideSkillSingnal = true;
+    }
 }
