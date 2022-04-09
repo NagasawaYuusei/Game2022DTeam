@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectSelectContoroller : MonoBehaviour
+public class ObjectSelectContoroller : SkillBase
 {
-    List<GameObject> _goList = new List<GameObject>();
-    int _nowNum = 0;
+    List<GameObject> _goList;
+    int _nowNum;
+
     protected virtual void Select(string tag)
     {
         List<GameObject> goList = new List<GameObject>();
@@ -12,7 +13,7 @@ public class ObjectSelectContoroller : MonoBehaviour
         _goList.Clear();
         _goList.AddRange(gos);
 
-        if(_goList.Count != 0)
+        if (_goList.Count != 0)
         {
             for (int i = 0; i < _goList.Count; i++)
             {
@@ -23,7 +24,7 @@ public class ObjectSelectContoroller : MonoBehaviour
             }
         }
 
-        if(goList.Count != 0 && _goList.Count != 0)
+        if (goList.Count != 0 && _goList.Count != 0)
         {
             for (int i = 0; i < goList.Count; i++)
             {
@@ -32,7 +33,7 @@ public class ObjectSelectContoroller : MonoBehaviour
         }
         _nowNum = 0;
     }
-    
+
     protected virtual GameObject First()
     {
         return _goList[_nowNum];

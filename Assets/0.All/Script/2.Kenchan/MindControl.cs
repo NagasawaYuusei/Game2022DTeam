@@ -3,7 +3,6 @@ using Cinemachine;
 
 public class MindControl : ObjectSelectContoroller
 {
-    SkillClass _sc = new SkillClass(2);
     bool _isNowControl;
     bool on;
     [SerializeField] CinemachineVirtualCamera _cvc;
