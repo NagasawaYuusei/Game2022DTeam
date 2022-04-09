@@ -19,6 +19,7 @@ public class HideSkill : MonoBehaviour
         {
             if (context.started)
             {
+                Debug.Log("HideSkill”­“®");
                 _hideCheck = true;
                 GameManager.Instance.PlayerHideSkillSignal(true);
             }
