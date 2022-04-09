@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Psychokinesis : ObjectSelectContoroller
 {
+    SkillClass _sc = new SkillClass(1);
     bool on = false;
     GameObject _block = default;
     bool _isNowControl;

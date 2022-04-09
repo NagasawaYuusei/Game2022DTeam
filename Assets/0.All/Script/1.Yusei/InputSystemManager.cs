@@ -10,6 +10,10 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
     [Tooltip("Jumpキー")] public bool _isJump;
     [Tooltip("スキルキー")] public bool _isSkill;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="context"></param>
     public void PlayerMoveInput(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -22,6 +26,10 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="context"></param>
     public void PlayerStickInput(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -34,6 +42,10 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="context"></param>
     public void PlayerJumpInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -42,11 +54,23 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="context"></param>
     public void PlayerSkillInput(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             _isSkill = true;
+        }
+    }
+
+    public void SetSkillInput(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            SkillManager.Instance.SkillChange();
         }
     }
 }

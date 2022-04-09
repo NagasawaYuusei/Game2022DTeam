@@ -1,8 +1,8 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class SuperJump : MonoBehaviour
 {
+    SkillClass _sc = new SkillClass(3);
     int _jumpCount;
     [Header("Player‚Ìİ’è")]
     [SerializeField] GameObject _player;

@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// コントローラー振動テストコンポーネント
+/// </summary>
 public class ShakeTest : MonoBehaviour
 {
     [SerializeField] float _first;
     [SerializeField] float _second;
+
+
     //private IEnumerator Start()
     //{
     //    Gamepad gamepad = Gamepad.current;
@@ -18,6 +23,9 @@ public class ShakeTest : MonoBehaviour
     //    }
     //}
 
+    /// <summary>
+    /// 最初から振動させる
+    /// </summary>
     private void Start()
     {
         Gamepad gamepad = Gamepad.current;
