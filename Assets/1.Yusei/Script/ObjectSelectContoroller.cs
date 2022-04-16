@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectSelectContoroller : SkillBase
+public class ObjectSelectContoroller : MonoBehaviour
 {
     List<GameObject> _goList;
     int _nowNum;

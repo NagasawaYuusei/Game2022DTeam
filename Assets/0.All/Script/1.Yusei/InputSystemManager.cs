@@ -70,7 +70,7 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
     {
         if(context.started)
         {
-            //SkillManager.Instance.SkillChange();
+            SkillManager.Instance.SkillChange();
         }
     }
 }

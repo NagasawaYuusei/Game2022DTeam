@@ -39,13 +39,15 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
     /// </summary>
     public void SkillChange()
     {
-        _nowSetSkills[_nowSkillNum].SetActive(false);
+        if (_nowSetSkills[_nowSkillNum])
+            _nowSetSkills[_nowSkillNum].SetActive(false);
         _nowSkillNum++;
         if (_nowSkillNum == 3)
         {
             _nowSkillNum = 0;
         }
-        _nowSetSkills[_nowSkillNum].SetActive(true);
+        if (_nowSetSkills[_nowSkillNum])
+            _nowSetSkills[_nowSkillNum].SetActive(true);
     }
 
     /// <summary>
@@ -54,6 +56,7 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
     public void FirstSetSkill()
     {
         _nowSkillNum = 0;
-        _nowSetSkills[_nowSkillNum].SetActive(true);
+        if(_nowSetSkills[_nowSkillNum])
+            _nowSetSkills[_nowSkillNum].SetActive(true);
     }
 }
