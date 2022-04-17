@@ -6,17 +6,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     protected override bool dontDestroyOnLoad { get { return true; } }
     public bool m_on { get; set; }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int _num;
+    public bool _first;
 
     /// <summary>
     /// プレイヤーのHideSkillの使用したかを受け取る
@@ -27,5 +18,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         if (check == false) _playerHideSkillSingnal = false;
         else if (check == true) _playerHideSkillSingnal = true;
+    }
+
+    void Start()
+    {
+        SkillManager.Instance.FirstSetSkill();
     }
 }

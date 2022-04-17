@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class SceneController : MonoBehaviour
+public class SceneController : SingletonMonoBehaviour<SceneController>
 {
+    protected override bool dontDestroyOnLoad { get { return true; } }
     void Start()
     {
         FadeController.StartFadeIn();

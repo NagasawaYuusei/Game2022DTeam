@@ -1,8 +1,15 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// シングルトンパターン用のクラス
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 {
+    /// <summary>
+    /// シングルトンで作るかどうかのクラス
+    /// </summary>
     protected abstract bool dontDestroyOnLoad { get; }
 
     private static T instance;
