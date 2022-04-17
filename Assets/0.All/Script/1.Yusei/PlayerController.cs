@@ -12,12 +12,19 @@ public class PlayerController : MonoBehaviour
     [Tooltip("設置判定距離"), SerializeField] float _groundLength;
     [Tooltip("地面のレイヤー"), SerializeField] LayerMask _layerMask;
     [Tooltip("設置判定をオンにするかどうか"), SerializeField] bool _isGroundedVisible;
-    bool _on;
 
+    bool _on;
+    GameObject _mc;
+    GameObject _pc;
+    GameObject _sj;
+         
     public bool On { set { _on = value; } }
 
     void Start()
     {
+        _mc = SkillManager.Instance.transform.Find("1.Psychokinesis").gameObject;
+        _pc = SkillManager.Instance.transform.Find("2.MindContorol").gameObject;
+        _sj = SkillManager.Instance.transform.Find("3.SuperJump").gameObject;
         StartSetUp();
     }
 
@@ -56,10 +63,22 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void PlayerMove()
     {
-        if (GetComponent<MindControl>().IsNowControl || GetComponent<Psychokinesis>().IsNowControl)
+        if (_mc.activeSelf)
         {
-            _rb.velocity = Vector2.zero;
-            return;
+            if(_mc.GetComponent<Psychokinesis>().IsNowControl)
+            {
+                _rb.velocity = Vector2.zero;
+                return;
+            }
+        }
+
+        if (_pc.activeSelf)
+        {
+            if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+            {
+                _rb.velocity = Vector2.zero;
+                return;
+            }
         }
         _rb.velocity = new Vector2(InputSystemManager.Instance._vec1.x * _moveSpeed, _rb.velocity.y);
     }
@@ -69,11 +88,15 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void PlayerJump()
     {
-        if (GetComponent<MindControl>().IsNowControl) return;
-        if (GetComponent<SuperJump>().enabled)
+        if (_mc.activeSelf)
         {
-            return;
+            if (!_mc.GetComponent<Psychokinesis>().IsNowControl)
+            {
+                return;
+            }
         }
+        if (_sj.activeSelf) return;
+
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
             JumpMethod();
@@ -94,7 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
         Debug.DrawRay(transform.position, Vector2.down * _groundLength);
-        if (!jumpray && !GetComponent<SuperJump>().enabled) InputSystemManager.Instance._isJump = false;
+        if (!jumpray && !_sj.activeSelf) InputSystemManager.Instance._isJump = false;
         return jumpray;
     }
 

@@ -1,11 +1,9 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class SuperJump : MonoBehaviour
 {
     int _jumpCount;
-    [Header("PlayerÇÃê›íË")]
-    [SerializeField] GameObject _player;
+    GameObject _player;
     [Header("ëΩíiÉWÉÉÉìÉvÇÃê›íË")]
     [SerializeField] int _maxJumpCount;
 
@@ -13,8 +11,35 @@ public class SuperJump : MonoBehaviour
     public bool IsSuperJump { get { return _isJumped; } set { _isJumped = value; } }
     public int JumpCount { set { _jumpCount = value; } }
     [SerializeField] string GroundTagName;
+
+    private static SuperJump instance;
+    public static SuperJump Instance
+    {
+        get
+        {
+            if (!instance)
+            {
+                instance = (SuperJump)FindObjectOfType(typeof(SuperJump));
+                if (!instance)
+                {
+                    Debug.LogError("nothing");
+                }
+            }
+            return instance;
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        if (this != Instance)
+        {
+            Destroy(this);
+            return;
+        }
+    }
     void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         _jumpCount = 0;
     }
 

@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 1f77b3bedd88e7a43b59ad946bb589f6, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 1f77b3bedd88e7a43b59ad946bb589f6,
+    type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -79,7 +80,19 @@ MonoBehaviour:
     m_ActionId: 48a5d476-4543-451b-9c90-f1d12922531d
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1766127140170937249}
+        m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+        m_MethodName: PlayerSkillInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: dd058b9a-22c0-4862-a43e-529f4d8eb8b6
     m_ActionName: Player/Fire[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -126,7 +139,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1766127140170937249}
         m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
-        m_MethodName: PlayerMoveInput
+        m_MethodName: PlayerJumpInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -138,6 +151,46 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: dd2c2e78-bdda-458f-a1b2-4b9fe663dd6f
     m_ActionName: Player/Fire2[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1766127140170937249}
+        m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+        m_MethodName: PlayerStickInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 56857b00-f0ed-4c25-91a6-6d45236a4677
+    m_ActionName: Player/Stick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: db1657ab-eb4c-4e5f-b6c4-c1206d691e30
+    m_ActionName: Player/X
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 06b378cd-f751-456e-81d7-3be99650cf97
+    m_ActionName: Enemy/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1766127140170937249}
+        m_TargetAssemblyTypeName: InputSystemManager, Assembly-CSharp
+        m_MethodName: SetSkillInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 204b23de-9700-41c9-b5fa-c935f6889f2c
+    m_ActionName: Player/SkillChange[/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -155,3 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639c039d65a15a943898e8d8df74b7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vec1: {x: 0, y: 0}
+  _vec2: {x: 0, y: 0}
+  _vec3: {x: 0, y: 0}
+  _isJump: 0
+  _isSkill: 0

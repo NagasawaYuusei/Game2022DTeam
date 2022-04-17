@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Psychokinesis : ObjectSelectContoroller
 {
@@ -17,6 +16,36 @@ public class Psychokinesis : ObjectSelectContoroller
 
     public bool IsPsychokinesis { get { return _isPsychokinesis; } set { _isPsychokinesis = value; } }
     public bool IsNowControl { get { return _isNowControl; } }
+
+
+
+    private static Psychokinesis instance;
+    public static Psychokinesis Instance
+    {
+        get
+        {
+            if (!instance)
+            {
+                instance = (Psychokinesis)FindObjectOfType(typeof(Psychokinesis));
+                if (!instance)
+                {
+                    Debug.LogError("nothing");
+                }
+            }
+            return instance;
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        if (this != Instance)
+        {
+            Destroy(this);
+            return;
+        }
+    }
+
+
 
     private void Update()
     {

@@ -18,6 +18,36 @@ public class MindControl : ObjectSelectContoroller
     public bool IsMindControl { get { return _isMindControl; } set { _isMindControl = value; } }
     public bool IsNowControl { get { return _isNowControl; } }
 
+
+
+    private static MindControl instance;
+    public static MindControl Instance
+    {
+        get
+        {
+            if (!instance)
+            {
+                instance = (MindControl)FindObjectOfType(typeof(MindControl));
+                if (!instance)
+                {
+                    Debug.LogError("nothing");
+                }
+            }
+            return instance;
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        if (this != Instance)
+        {
+            Destroy(this);
+            return;
+        }
+    }
+
+
+
     void Update()
     {
         EnemyMindControl();
