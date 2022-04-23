@@ -47,23 +47,13 @@ public class TestEnemy : MonoBehaviour
     }
 
     /// <summary>
-    /// プレイヤーを追跡する
-    /// </summary>
-    public void PlayerTracking()
-    {
-        if (GameManager.Instance._playerHideSkillSingnal) _navMeshAgent.destination = _playerPos.position;
-        else if (!GameManager.Instance._playerHideSkillSingnal) ;
-
-    }
-
-    /// <summary>
     /// 止まっている時間
     /// </summary>
     /// <returns></returns>
     IEnumerator ReMoveCount()
     {
         yield return new WaitForSeconds(_stopTime);
-        _player.GetComponent<GetMedusaManager>()._medusaCheck = false;
+        //_player.GetComponent<GetMedusaManager>()._medusaCheck = false;
         _rb2d.constraints = RigidbodyConstraints2D.None;
     }
 
@@ -73,13 +63,13 @@ public class TestEnemy : MonoBehaviour
     /// <param name="context"></param>
     public void PlayerMedusaInput(InputAction.CallbackContext context)
     {
-        if (context.started && _player.GetComponent<GetMedusaManager>()._medusaCheck == true)
-        {
-            if (_isInsideCamera)
-            {
-                _rb2d.constraints = RigidbodyConstraints2D.FreezeAll;//Rigidbody2DのFreezeを全てオンにしている
-                StartCoroutine("ReMoveCount");
-            }
-        }
+        //if (context.started && _player.GetComponent<GetMedusaManager>()._medusaCheck == true)
+        //{
+        //    if (_isInsideCamera)
+        //    {
+        //        _rb2d.constraints = RigidbodyConstraints2D.FreezeAll;//Rigidbody2DのFreezeを全てオンにしている
+        //        StartCoroutine("ReMoveCount");
+        //    }
+        //}
     }
 }

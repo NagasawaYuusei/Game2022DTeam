@@ -2,8 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : SingletonMonoBehaviour<PlayerController>
 {
+    protected override bool dontDestroyOnLoad { get { return false; } }
     [Tooltip("プレイヤーのRb")] Rigidbody2D _rb;
     [Header("設定項目")]
     [Tooltip("移動速度"), SerializeField] float _moveSpeed;
@@ -14,11 +15,12 @@ public class PlayerController : MonoBehaviour
     [Tooltip("設置判定をオンにするかどうか"), SerializeField] bool _isGroundedVisible;
 
     bool _on;
-    GameObject _mc;
-    GameObject _pc;
-    GameObject _sj;
-         
+    [Tooltip("MindCon")] GameObject _mc;
+    [Tooltip("Psychokinesis")] GameObject _pc;
+    [Tooltip("SuperJump")] GameObject _sj;
+
     public bool On { set { _on = value; } }
+    public float JumpSpeed { get { return _jumpSpeed; } }
 
     void Start()
     {
@@ -63,23 +65,27 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void PlayerMove()
     {
-        if (_mc.activeSelf)
+        if (_mc.activeSelf || _pc.activeSelf)
         {
-            if(_mc.GetComponent<Psychokinesis>().IsNowControl)
+            if(_mc.activeSelf)
             {
-                _rb.velocity = Vector2.zero;
-                return;
+                if (_mc.GetComponent<MindControl>().IsNowControl)
+                {
+                    _rb.velocity = Vector2.zero;
+                    return;
+                }
+            }
+            
+            if(_pc.activeSelf)
+            {
+                if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+                {
+                    _rb.velocity = Vector2.zero;
+                    return;
+                }
             }
         }
 
-        if (_pc.activeSelf)
-        {
-            if (_pc.GetComponent<Psychokinesis>().IsNowControl)
-            {
-                _rb.velocity = Vector2.zero;
-                return;
-            }
-        }
         _rb.velocity = new Vector2(InputSystemManager.Instance._vec1.x * _moveSpeed, _rb.velocity.y);
     }
 
@@ -88,17 +94,36 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void PlayerJump()
     {
-        if (_mc.activeSelf)
+        if (_mc.activeSelf || _pc.activeSelf)
         {
-            if (!_mc.GetComponent<Psychokinesis>().IsNowControl)
+            if (_mc.activeSelf)
             {
-                return;
+                if (_mc.GetComponent<MindControl>().IsNowControl)
+                {
+                    _rb.velocity = Vector2.zero;
+                    return;
+                }
+            }
+
+            if (_pc.activeSelf)
+            {
+                if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+                {
+                    _rb.velocity = Vector2.zero;
+                    return;
+                }
             }
         }
-        if (_sj.activeSelf) return;
 
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
+            if (_sj.activeSelf)
+            {
+                SuperJump.Instance.SuperJumpMethod();
+                StartCoroutine(Vibration(1, 1, _shakeTime));
+                return;
+            }
+
             JumpMethod();
         }
     }
@@ -117,7 +142,7 @@ public class PlayerController : MonoBehaviour
     {
         bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
         Debug.DrawRay(transform.position, Vector2.down * _groundLength);
-        if (!jumpray && !_sj.activeSelf) InputSystemManager.Instance._isJump = false;
+        if (!jumpray) InputSystemManager.Instance._isJump = false;
         return jumpray;
     }
 
