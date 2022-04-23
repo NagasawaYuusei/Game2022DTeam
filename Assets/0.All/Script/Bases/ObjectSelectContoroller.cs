@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ObjectSelectContoroller : MonoBehaviour
 {
-    List<GameObject> _goList;
-    int _nowNum;
+    [Tooltip("画面内のオブジェクト")] List<GameObject> _goList;
+    [Tooltip("現在選択されているオブジェクト")]int _nowNum;
 
     protected virtual void Select(string tag)
     {
@@ -17,7 +17,7 @@ public class ObjectSelectContoroller : MonoBehaviour
         {
             for (int i = 0; i < _goList.Count; i++)
             {
-                if (!_goList[i].GetComponent<IsEnemyInCamera>().IsEnemyInCameraState)
+                if (!_goList[i].GetComponent<IsObjectInCamera>().IsObjectInCameraState)
                 {
                     goList.Add(_goList[i]);
                 }
