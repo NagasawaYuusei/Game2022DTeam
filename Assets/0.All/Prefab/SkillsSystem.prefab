@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfdccac791e95643b928778bb81c812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lightTagName: Light
+  _lightTagName: LightObject
 --- !u!1 &2201047619811304159
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2201047620627972885}
+  - component: {fileID: 6209412451608524979}
   m_Layer: 0
   m_Name: 5.Blink
   m_TagString: Untagged
@@ -243,6 +244,20 @@ Transform:
   m_Father: {fileID: 6209412450398232277}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6209412451608524979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201047620627972884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b0f641b41836d409f362e344c35a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blinkSpeed: 10
+  _waitTime: 0.1
 --- !u!1 &2201047620768457068
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,8 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c61eff9531b1cf40b3aaa33c0deebf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTagName: 
-  _smallPlayerTagName: 
+  _playerTagName: SmallPlayer
+  _smallPlayerTagName: SmallPlayer2
 --- !u!1 &6209412450398232274
 GameObject:
   m_ObjectHideFlags: 0

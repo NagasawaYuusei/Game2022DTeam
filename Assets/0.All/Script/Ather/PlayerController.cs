@@ -18,6 +18,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     [Tooltip("MindCon")] GameObject _mc;
     [Tooltip("Psychokinesis")] GameObject _pc;
     [Tooltip("SuperJump")] GameObject _sj;
+    GameObject _bl;
 
     public bool On { set { _on = value; } }
     public float JumpSpeed { get { return _jumpSpeed; } }
@@ -27,6 +28,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         _mc = SkillManager.Instance.transform.Find("1.Psychokinesis").gameObject;
         _pc = SkillManager.Instance.transform.Find("2.MindContorol").gameObject;
         _sj = SkillManager.Instance.transform.Find("3.SuperJump").gameObject;
+        _bl = SkillManager.Instance.transform.Find("5.Blink").gameObject;
         StartSetUp();
     }
 
@@ -69,7 +71,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         {
             if(_mc.activeSelf)
             {
-                if (_mc.GetComponent<MindControl>().IsNowControl)
+                if (_mc.GetComponent<MindControl>().IsCurrentControl)
                 {
                     _rb.velocity = Vector2.zero;
                     return;
@@ -85,6 +87,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
                 }
             }
         }
+        if (_bl.activeSelf && InputSystemManager.Instance._isSkill) return;
 
         _rb.velocity = new Vector2(InputSystemManager.Instance._vec1.x * _moveSpeed, _rb.velocity.y);
     }
@@ -98,7 +101,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         {
             if (_mc.activeSelf)
             {
-                if (_mc.GetComponent<MindControl>().IsNowControl)
+                if (_mc.GetComponent<MindControl>().IsCurrentControl)
                 {
                     _rb.velocity = Vector2.zero;
                     return;

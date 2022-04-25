@@ -6,7 +6,7 @@ public class First : MonoBehaviour
     {
         if(!GameManager.Instance._first)
         {
-            GameManager.Instance._num = 1;
+            GameManager.Instance.PosNum = 1;
             GameManager.Instance._first = true;
         }
     }

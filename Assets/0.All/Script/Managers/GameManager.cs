@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     protected override bool dontDestroyOnLoad { get { return true; } }
-    public int _num;
+    private int _posNum;
     public bool _first;
     public bool _isPlayerHide;
+
+    public int PosNum { get => _posNum; set => _posNum = value; }
 
     void Start()
     {

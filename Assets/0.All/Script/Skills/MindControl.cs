@@ -3,9 +3,9 @@ using Cinemachine;
 
 public class MindControl : ObjectSelectContoroller
 {
-    bool _isNowControl;
+    bool _isCurrentControl;
     bool on;
-    [SerializeField] CinemachineVirtualCamera _cvc;
+    [Tooltip("シネマシン")] CinemachineVirtualCamera _cvc;
     [Header("操作するエネミーを格納")]
     [Tooltip("洗脳したエネミー")] GameObject _mindEnemy;
     [Tooltip("エネミーのRigidbody")] Rigidbody2D _enemyRb;
@@ -16,7 +16,7 @@ public class MindControl : ObjectSelectContoroller
 
     [SerializeField, Tooltip("このスキルが使えるかどうか")] bool _isMindControl = true;
     public bool IsMindControl { get { return _isMindControl; } set { _isMindControl = value; } }
-    public bool IsNowControl { get { return _isNowControl; } }
+    public bool IsCurrentControl { get { return _isCurrentControl; } }
 
 
 
@@ -46,7 +46,10 @@ public class MindControl : ObjectSelectContoroller
         }
     }
 
-
+    void Start()
+    {
+        _cvc = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
+    }
 
     void Update()
     {
@@ -60,24 +63,24 @@ public class MindControl : ObjectSelectContoroller
     void EnemyMindControl()
     {
         if (!_isMindControl) return;
-        if (InputSystemManager.Instance._isSkill && !_isNowControl)
+        if (InputSystemManager.Instance._isSkill && !_isCurrentControl)
         {
             Select("Enemy");
             _mindEnemy = First();
             _enemyRb = _mindEnemy.GetComponent<Rigidbody2D>();
             _cvc.Follow = _mindEnemy.transform;
-            _isNowControl = true;
+            _isCurrentControl = true;
             InputSystemManager.Instance._isSkill = false;
         }
-        else if(InputSystemManager.Instance._isSkill && _isNowControl)
+        else if(InputSystemManager.Instance._isSkill && _isCurrentControl)
         {
             _cvc.Follow = gameObject.transform;
-            _isNowControl = false;
+            _isCurrentControl = false;
             _enemyRb.velocity = Vector2.zero;
             InputSystemManager.Instance._isSkill = false;
         }
 
-        if(_isNowControl)
+        if(_isCurrentControl)
         {
             EnemyMove();
             if(InputSystemManager.Instance._vec2.y > 0 && !on)

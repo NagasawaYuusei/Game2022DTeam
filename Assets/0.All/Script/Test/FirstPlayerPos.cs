@@ -7,6 +7,6 @@ public class FirstPlayerPos : MonoBehaviour
     [SerializeField] GameObject _player;
     void Awake()
     {
-        _player.transform.position = GameObject.Find("FirstPlayerPos" + GameManager.Instance._num.ToString()).transform.position;
+        _player.transform.position = GameObject.Find("FirstPlayerPos" + GameManager.Instance.PosNum.ToString()).transform.position;
     }
 }
