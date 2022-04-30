@@ -4,10 +4,15 @@ public class First : MonoBehaviour
 {
     void Awake()
     {
-        if(!GameManager.Instance._first)
+        if(!GameManager.Instance.First)
         {
-            GameManager.Instance._num = 1;
-            GameManager.Instance._first = true;
+            GameManager.Instance.PosNum = 1;
+            GameManager.Instance.First = true;
         }
     }
+
+    //private void Update()
+    //{
+    //    Debug.Log(SkillManager.Instance.NowSetSkills.Length);
+    //}
 }
