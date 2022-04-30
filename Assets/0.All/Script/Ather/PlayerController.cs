@@ -19,16 +19,18 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     [Tooltip("Psychokinesis")] GameObject _pc;
     [Tooltip("SuperJump")] GameObject _sj;
     GameObject _bl;
+    GameObject _gh;
 
     public bool On { set { _on = value; } }
     public float JumpSpeed { get { return _jumpSpeed; } }
 
     void Start()
     {
-        _mc = SkillManager.Instance.transform.Find("1.Psychokinesis").gameObject;
-        _pc = SkillManager.Instance.transform.Find("2.MindContorol").gameObject;
+        _pc = SkillManager.Instance.transform.Find("1.Psychokinesis").gameObject;
+        _mc = SkillManager.Instance.transform.Find("2.MindContorol").gameObject;
         _sj = SkillManager.Instance.transform.Find("3.SuperJump").gameObject;
         _bl = SkillManager.Instance.transform.Find("5.Blink").gameObject;
+        _gh = SkillManager.Instance.transform.Find("4.GrapringHook" ).gameObject;
         StartSetUp();
     }
 
@@ -88,6 +90,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             }
         }
         if (_bl.activeSelf && InputSystemManager.Instance._isSkill) return;
+        if (_gh.activeSelf && InputSystemManager.Instance._isSkill) return;
 
         _rb.velocity = new Vector2(InputSystemManager.Instance._vec1.x * _moveSpeed, _rb.velocity.y);
     }
@@ -169,6 +172,14 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             gamepad.SetMotorSpeeds(lowFrequency, highFrequency);
             yield return new WaitForSeconds(time); // 1 ïbä‘êUìÆÇ≥ÇπÇÈ
             gamepad.SetMotorSpeeds(0, 0);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Finish")
+        {
+            InputSystemManager.Instance._isSkill = false;
         }
     }
 }

@@ -6,12 +6,12 @@ using UnityEngine;
 public class SceneMove : MonoBehaviour
 {
     [Tooltip("ˆÚ“®‚µ‚½‚¢ƒV[ƒ“‚Ì–¼‘O"), SerializeField] string _sceneName;
-    [Tooltip("ˆÚ“®‚µ‚½‚¢êŠ‚Ì”Ô†"), SerializeField] int _num;
+    [Tooltip("ˆÚ“®‚µ‚½‚¢êŠ‚Ì”Ô†"), SerializeField] int _posNum;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
-            GameManager.Instance.PosNum = _num;
+            GameManager.Instance.PosNum = _posNum;
             SceneController.Instance.ChangeScene(_sceneName);
         }
     }
