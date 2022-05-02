@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class ObjectSelectContoroller : MonoBehaviour
 {
-    [Tooltip("画面内のオブジェクト")] List<GameObject> _goList;
+    [Tooltip("画面内のオブジェクト")] List<GameObject> _goList = new List<GameObject>();
     [Tooltip("現在選択されているオブジェクト")]int _nowNum;
 
     protected virtual void Select(string tag)
     {
         List<GameObject> goList = new List<GameObject>();
         GameObject[] gos = GameObject.FindGameObjectsWithTag(tag);
-        _goList.Clear();
+        if(_goList.Count != 0)
+        {
+            _goList.Clear();
+        }
         _goList.AddRange(gos);
 
         if (_goList.Count != 0)
