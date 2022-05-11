@@ -3,16 +3,24 @@ using UnityEngine;
 public class SkillManager : SingletonMonoBehaviour<SkillManager>
 {
     protected override bool dontDestroyOnLoad { get { return true; } }
-    [Tooltip("スキルの順番")]int _nowSkillNum;
+    [Tooltip("現在のスキルの順番")]int _nowSkillNum;
     [SerializeField, Tooltip("すべてのスキルのリスト")] GameObject[] _skillList;
-    [Tooltip("セットされてるスキル")]GameObject[] _nowSetSkills = new GameObject[3];
+    GameObject[] _playerSkillSprites;
+    [Tooltip("セットされてるスキルのゲームオブジェクト")]GameObject[] _nowSetSkills = new GameObject[3];
     bool _isNowSet;
     int _nowSetSkillNum;
     bool _isSkillUI;
     public int NowSkillNum { get { return _nowSkillNum; } set { _nowSkillNum = value; } }
     public GameObject[] NowSetSkills { get { return _nowSetSkills; } set { _nowSetSkills = value; } }
-
     public bool IsSkillUI => _isSkillUI;
+    GameObject _particle;
+    [SerializeField] string _particleTag;
+
+    void Start()
+    {
+        _particle = GameObject.FindGameObjectWithTag(_particleTag);
+    }
+
 
     /// <summary>
     /// スキルをセットする関数
@@ -39,6 +47,15 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
         }
     }
 
+    public void PlayerSpriteSet()
+    {
+        _playerSkillSprites = new GameObject[_skillList.Length];
+        for (int i = 0; i < _skillList.Length; i++)
+        {
+            _playerSkillSprites[i] = GameObject.FindGameObjectWithTag("Player").transform.Find(_skillList[i].name).gameObject;
+        }
+    }
+
     public void SetSkill(int i)
     {
         bool isSet = false;
@@ -55,6 +72,7 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
             if(isSet)
             {
                 _nowSetSkillNum = i;
+                GameObject.Find("SkillSet").GetComponent<SkillSetUseSkill>().SelectSkill(_nowSetSkillNum - 1, _isNowSet);
                 _isNowSet = true;
             }
         }
@@ -78,7 +96,10 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
                     }
                 }
                 _nowSetSkills[set] = _skillList[i - 1];
+                GameObject.Find("SkillSet").GetComponent<SkillSetUseSkill>().SelectSkill(_nowSetSkillNum - 1, _isNowSet);
+                GameObject.Find("SkillSet").GetComponent<SkillSetUseSkill>().UseingSkills();
             }
+            SetClear();
         }
     }
         
@@ -98,15 +119,28 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
     /// </summary>
     public void SkillChange()
     {
+        var str = default(string[]);
         if (_nowSetSkills[_nowSkillNum])
+        {
+            str = _nowSetSkills[_nowSkillNum].name.Split('.');
             _nowSetSkills[_nowSkillNum].SetActive(false);
+            _playerSkillSprites[int.Parse(str[0]) - 1].SetActive(false);
+        }
+
         _nowSkillNum++;
+
         if (_nowSkillNum == 3)
         {
             _nowSkillNum = 0;
         }
+
         if (_nowSetSkills[_nowSkillNum])
+        {
+            str = _nowSetSkills[_nowSkillNum].name.Split('.');
             _nowSetSkills[_nowSkillNum].SetActive(true);
+            _playerSkillSprites[int.Parse(str[0]) - 1].SetActive(true);
+            _particle.GetComponentInParent<ParticleSystem>().Play();
+        }
     }
 
     /// <summary>
@@ -114,8 +148,37 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
     /// </summary>
     public void FirstSetSkill()
     {
+        string[] str = default(string[]);
+        bool on = false;
+        if (_nowSetSkills[_nowSkillNum])
+        {
+            on = true;
+            str = _nowSetSkills[_nowSkillNum].name.Split('.');
+            _nowSetSkills[_nowSkillNum].SetActive(false);
+            _playerSkillSprites[int.Parse(str[0]) - 1].SetActive(false);
+        }
         _nowSkillNum = 0;
-        if(_nowSetSkills[_nowSkillNum])
+        if (_nowSetSkills[_nowSkillNum])
+        {
+            on = true;
+            str = _nowSetSkills[_nowSkillNum].name.Split('.');
             _nowSetSkills[_nowSkillNum].SetActive(true);
+            _playerSkillSprites[int.Parse(str[0]) - 1].SetActive(true);
+        }
+
+        if(!on)
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.Find("0.Normal").gameObject.SetActive(true);
+        }
+    }
+
+    public void ResetSkill()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            if (_nowSetSkills[i])
+                _nowSetSkills[i].SetActive(false);
+                _playerSkillSprites[i].SetActive(false);
+        }
     }
 }

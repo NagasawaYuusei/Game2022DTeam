@@ -15,7 +15,7 @@ public class FadeController : MonoBehaviour
     private Color _startColor = Color.black;
     private void Awake()
     {
-        _fadeImage = GameObject.Find("Black").GetComponent<Image>();
+        _fadeImage = GameObject.Find("FadeBlack").GetComponent<Image>();
         instance = this;
         _fadeImage.gameObject.SetActive(false);
     }
