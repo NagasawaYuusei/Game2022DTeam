@@ -8,5 +8,6 @@ public class SkillTest : MonoBehaviour
     void Awake()
     {
         SkillManager.Instance.SetSkills(_nowSetSkills);
+        SkillManager.Instance.FirstSetSkill();
     }
 }

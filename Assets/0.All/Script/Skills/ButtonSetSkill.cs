@@ -21,6 +21,7 @@ public class ButtonSetSkill : MonoBehaviour
 
     private void A()
     {
+        SkillManager.Instance.SetClear();
         GameObject.Find("SkillSet").SetActive(false);
     }
 }

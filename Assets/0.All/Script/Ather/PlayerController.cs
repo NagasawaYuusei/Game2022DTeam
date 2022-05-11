@@ -29,8 +29,8 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         _pc = SkillManager.Instance.transform.Find("1.Psychokinesis").gameObject;
         _mc = SkillManager.Instance.transform.Find("2.MindContorol").gameObject;
         _sj = SkillManager.Instance.transform.Find("3.SuperJump").gameObject;
-        _bl = SkillManager.Instance.transform.Find("5.Blink").gameObject;
-        _gh = SkillManager.Instance.transform.Find("4.GrapringHook" ).gameObject;
+        _bl = SkillManager.Instance.transform.Find("8.Blink").gameObject;
+        _gh = SkillManager.Instance.transform.Find("7.GrapringHook" ).gameObject;
         StartSetUp();
     }
 
