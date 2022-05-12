@@ -3333,9 +3333,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_FalloffIntensity: 0.352
+  m_Color: {r: 0.9622642, g: 0.79061335, b: 0.41213953, a: 1}
+  m_Intensity: 6
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -3384,8 +3384,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 0
   m_PointLightOuterAngle: 122.079865
-  m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 5
+  m_PointLightInnerRadius: 2
+  m_PointLightOuterRadius: 10
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -3912,9 +3912,9 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_FalloffIntensity: 0.352
+  m_Color: {r: 0.9622642, g: 0.79061335, b: 0.41213953, a: 1}
+  m_Intensity: 6
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -3963,8 +3963,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 0
   m_PointLightOuterAngle: 122.079865
-  m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 5
+  m_PointLightInnerRadius: 2
+  m_PointLightOuterRadius: 10
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -5956,6 +5956,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "\u8AC7\u8A71\u5BA4\u8868_0001_\u30D5\u30A9\u30EB\u30C0\u30FC-20-\u306E\u30B3\u30D4\u30FC-3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453813208359225370, guid: e9a55be629ec81548adacdfa458fe18b,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.41213953
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453813208359225370, guid: e9a55be629ec81548adacdfa458fe18b,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.79061335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453813208359225370, guid: e9a55be629ec81548adacdfa458fe18b,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453813208359225370, guid: e9a55be629ec81548adacdfa458fe18b,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453813208359225370, guid: e9a55be629ec81548adacdfa458fe18b,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.352
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453813208359225370, guid: e9a55be629ec81548adacdfa458fe18b,
+        type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453813208359225370, guid: e9a55be629ec81548adacdfa458fe18b,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9a55be629ec81548adacdfa458fe18b, type: 3}
