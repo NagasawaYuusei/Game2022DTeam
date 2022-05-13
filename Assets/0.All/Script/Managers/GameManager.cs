@@ -14,12 +14,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     /// <summary>ゲーム開始時かどうか</summary>
     public bool First { get => _first; set => _first = value; }
 
-    void Start()
-    {
-        //シーン移動後のスキルのセット
-        SkillManager.Instance.FirstSetSkill();
-    }
-
     /// <summary>
     /// プレイヤーのハイド状態を変更する
     /// </summary>

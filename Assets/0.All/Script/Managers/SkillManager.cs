@@ -3,10 +3,10 @@ using UnityEngine;
 public class SkillManager : SingletonMonoBehaviour<SkillManager>
 {
     protected override bool dontDestroyOnLoad { get { return true; } }
-    [Tooltip("現在のスキルの順番")]int _nowSkillNum;
+    [Tooltip("現在のスキルの順番")] int _nowSkillNum;
     [SerializeField, Tooltip("すべてのスキルのリスト")] GameObject[] _skillList;
     GameObject[] _playerSkillSprites;
-    [Tooltip("セットされてるスキルのゲームオブジェクト")]GameObject[] _nowSetSkills = new GameObject[3];
+    [Tooltip("セットされてるスキルのゲームオブジェクト")] GameObject[] _nowSetSkills = new GameObject[3];
     bool _isNowSet;
     int _nowSetSkillNum;
     bool _isSkillUI;
@@ -15,12 +15,22 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
     public bool IsSkillUI => _isSkillUI;
     GameObject _particle;
     [SerializeField] string _particleTag;
+    [Tooltip("セットされてるスキル"), SerializeField] int[] _nowSetSkillsTest = new int[3];
+    [SerializeField] bool _isDebugSetSkills;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        SkillManager.Instance.PlayerSpriteSet();
+        if (_isDebugSetSkills)
+            SkillManager.Instance.SetSkills(_nowSetSkillsTest);
+        SkillManager.Instance.FirstSetSkill();
+    }
 
     void Start()
     {
         _particle = GameObject.FindGameObjectWithTag(_particleTag);
     }
-
 
     /// <summary>
     /// スキルをセットする関数
@@ -34,9 +44,9 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
             Debug.LogError("Skillの数は３つにしてください");
             return;
         }
-        for(int j = 0; j < 3; j++)
+        for (int j = 0; j < 3; j++)
         {
-            if(i[j] - 1 == -1)
+            if (i[j] - 1 == -1)
             {
                 _nowSetSkills[j] = null;
             }
@@ -60,23 +70,23 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
     {
         bool isSet = false;
         if (i == 0) return;
-        if(!_isNowSet)
+        if (!_isNowSet)
         {
-            for(int n = 0; n < 3; n++)
+            for (int n = 0; n < 3; n++)
             {
-                if(_nowSetSkills[n] == _skillList[i - 1])
+                if (_nowSetSkills[n] == _skillList[i - 1])
                 {
                     isSet = true;
                 }
             }
-            if(isSet)
+            if (isSet)
             {
                 _nowSetSkillNum = i;
                 GameObject.Find("SkillSet").GetComponent<SkillSetUseSkill>().SelectSkill(_nowSetSkillNum - 1, _isNowSet);
                 _isNowSet = true;
             }
         }
-        else if(_isNowSet && i != _nowSetSkillNum)
+        else if (_isNowSet && i != _nowSetSkillNum)
         {
             for (int n = 0; n < 3; n++)
             {
@@ -102,7 +112,7 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
             SetClear();
         }
     }
-        
+
     public void SetClear()
     {
         _isNowSet = false;
@@ -154,19 +164,11 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
         {
             on = true;
             str = _nowSetSkills[_nowSkillNum].name.Split('.');
-            _nowSetSkills[_nowSkillNum].SetActive(false);
-            _playerSkillSprites[int.Parse(str[0]) - 1].SetActive(false);
-        }
-        _nowSkillNum = 0;
-        if (_nowSetSkills[_nowSkillNum])
-        {
-            on = true;
-            str = _nowSetSkills[_nowSkillNum].name.Split('.');
             _nowSetSkills[_nowSkillNum].SetActive(true);
             _playerSkillSprites[int.Parse(str[0]) - 1].SetActive(true);
         }
 
-        if(!on)
+        if (!on)
         {
             GameObject.FindGameObjectWithTag("Player").transform.Find("0.Normal").gameObject.SetActive(true);
         }
@@ -174,11 +176,11 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
 
     public void ResetSkill()
     {
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (_nowSetSkills[i])
                 _nowSetSkills[i].SetActive(false);
-                _playerSkillSprites[i].SetActive(false);
+            _playerSkillSprites[i].SetActive(false);
         }
     }
 }

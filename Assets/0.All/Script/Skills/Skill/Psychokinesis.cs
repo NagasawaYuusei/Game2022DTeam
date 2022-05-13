@@ -52,17 +52,20 @@ public class Psychokinesis : ObjectSelectContoroller
     {
         if (InputSystemManager.Instance._isSkill && !_isNowControl)
         {
-            Select("Object");
+            Select("PsychokinesisObject");
             _block = First();
-            _objectRb = _block.GetComponent<Rigidbody2D>();
-            _objectRb.gravityScale = 0;
-            _objectRb.mass = 1;
-            _objectRb.constraints = RigidbodyConstraints2D.None;
+            if(_block)
+            {
+                _objectRb = _block.GetComponent<Rigidbody2D>();
+                _objectRb.gravityScale = 0;
+                _objectRb.mass = 1;
+                _objectRb.constraints = RigidbodyConstraints2D.None;
 
-            _originColor = _block.GetComponent<SpriteRenderer>().color;
-            _block.GetComponent<SpriteRenderer>().color = Color.yellow;
+                _originColor = _block.GetComponent<SpriteRenderer>().color;
+                _block.GetComponent<SpriteRenderer>().color = Color.yellow;
 
-            _isNowControl = true;
+                _isNowControl = true;
+            }
             InputSystemManager.Instance._isSkill = false;
         }
         else if (InputSystemManager.Instance._isSkill && _isNowControl)
@@ -86,6 +89,7 @@ public class Psychokinesis : ObjectSelectContoroller
                 _objectRb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 _block.GetComponent<SpriteRenderer>().color = _originColor;
                 _block = Change(1);
+                _objectRb = _block.GetComponent<Rigidbody2D>();
                 _objectRb.gravityScale = 0;
                 _objectRb.mass = 1;
                 _objectRb.constraints = RigidbodyConstraints2D.None;
@@ -100,6 +104,7 @@ public class Psychokinesis : ObjectSelectContoroller
                 _objectRb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 _block.GetComponent<SpriteRenderer>().color = _originColor;
                 _block = Change(-1);
+                _objectRb = _block.GetComponent<Rigidbody2D>();
                 _objectRb.gravityScale = 0;
                 _objectRb.mass = 1;
                 _objectRb.constraints = RigidbodyConstraints2D.None;
