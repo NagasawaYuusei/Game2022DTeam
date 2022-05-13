@@ -9,8 +9,6 @@ public class First : MonoBehaviour
             GameManager.Instance.PosNum = 1;
             GameManager.Instance.First = true;
         }
-
-        SkillManager.Instance.PlayerSpriteSet();
     }
 
     //private void Update()

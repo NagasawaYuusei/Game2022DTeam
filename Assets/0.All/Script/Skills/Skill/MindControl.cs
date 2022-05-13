@@ -67,9 +67,12 @@ public class MindControl : ObjectSelectContoroller
         {
             Select("Enemy");
             _mindEnemy = First();
-            _enemyRb = _mindEnemy.GetComponent<Rigidbody2D>();
-            _cvc.Follow = _mindEnemy.transform;
-            _isCurrentControl = true;
+            if(_mindEnemy)
+            {
+                _enemyRb = _mindEnemy.GetComponent<Rigidbody2D>();
+                _cvc.Follow = _mindEnemy.transform;
+                _isCurrentControl = true;
+            }
             InputSystemManager.Instance._isSkill = false;
         }
         else if(InputSystemManager.Instance._isSkill && _isCurrentControl)
