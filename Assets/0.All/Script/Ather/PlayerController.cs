@@ -20,6 +20,11 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     [Tooltip("SuperJump")] GameObject _sj;
     GameObject _bl;
     GameObject _gh;
+    Animator _anim;
+
+    bool _dead;
+    bool _isJump;
+    bool _speed;
 
     public bool On { set { _on = value; } }
     public float JumpSpeed { get { return _jumpSpeed; } }
@@ -32,12 +37,14 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         _bl = SkillManager.Instance.transform.Find("8.Blink").gameObject;
         _gh = SkillManager.Instance.transform.Find("7.GrapringHook" ).gameObject;
         StartSetUp();
+        SetAnim();
     }
 
     void Update()
     {
         PlayerJump();
         Visible();
+        Anim();
     }
 
     void FixedUpdate()
@@ -51,6 +58,14 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     void StartSetUp()
     {
         _rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Anim()
+    {
+        _anim.SetBool("Dead", _dead);
+        _anim.SetBool("IsGrounded", IsGrounded());
+        _anim.SetBool("IsJump", _isJump);
+        _anim.SetBool("Move", _speed);
     }
 
     /// <summary>
@@ -93,6 +108,14 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         if (_gh.activeSelf && InputSystemManager.Instance._isSkill) return;
 
         _rb.velocity = new Vector2(InputSystemManager.Instance._vec1.x * _moveSpeed, _rb.velocity.y);
+        if(InputSystemManager.Instance._vec1.x == 0)
+        {
+            _speed = false;
+        }
+        else
+        {
+            _speed = true;
+        }
     }
 
     /// <summary>
@@ -121,8 +144,10 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             }
         }
 
+        
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
+            _isJump = true;
             if (_sj.activeSelf)
             {
                 SuperJump.Instance.SuperJumpMethod();
@@ -131,6 +156,15 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             }
 
             JumpMethod();
+        }
+    }
+
+    public void SetAnim()
+    {
+        if (SkillManager.Instance.NowSetSkills[SkillManager.Instance.NowSkillNum])
+        {
+            GameObject obj = transform.Find(SkillManager.Instance.NowSetSkills[SkillManager.Instance.NowSkillNum].name).gameObject;
+            _anim = obj.GetComponent<Animator>();
         }
     }
 
@@ -149,6 +183,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
         Debug.DrawRay(transform.position, Vector2.down * _groundLength);
         if (!jumpray) InputSystemManager.Instance._isJump = false;
+        else _isJump = false;
         return jumpray;
     }
 
@@ -171,6 +206,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         {
             gamepad.SetMotorSpeeds(lowFrequency, highFrequency);
             yield return new WaitForSeconds(time); // 1 ïbä‘êUìÆÇ≥ÇπÇÈ
+            
             gamepad.SetMotorSpeeds(0, 0);
         }
     }
