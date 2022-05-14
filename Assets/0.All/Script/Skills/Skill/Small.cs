@@ -17,13 +17,13 @@ public class Small : MonoBehaviour
         {
             if (!_isSmall)
             {
-                GameObject.FindGameObjectWithTag("Player").transform.Find("chara").gameObject.SetActive(false);
-                GameObject.FindGameObjectWithTag("Player").transform.Find("chara (1)").gameObject.SetActive(true);
+                GameObject.FindGameObjectWithTag("Player").transform.Find("4.Small").gameObject.SetActive(false);
+                GameObject.FindGameObjectWithTag("Player").transform.Find("4.5SmallPlayerMini").gameObject.SetActive(true);
             }
             else
             {
-                GameObject.FindGameObjectWithTag("Player").transform.Find("chara").gameObject.SetActive(true);
-                GameObject.FindGameObjectWithTag("Player").transform.Find("chara (1)").gameObject.SetActive(false);
+                GameObject.FindGameObjectWithTag("Player").transform.Find("4.Small").gameObject.SetActive(true);
+                GameObject.FindGameObjectWithTag("Player").transform.Find("4.5SmallPlayerMini").gameObject.SetActive(false);
             }
             _isSmall = !_isSmall;
             InputSystemManager.Instance._isSkill = false;
