@@ -45,6 +45,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         PlayerJump();
         Visible();
         Anim();
+        PlayerVec();
     }
 
     void FixedUpdate()
@@ -58,6 +59,18 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     void StartSetUp()
     {
         _rb = GetComponent<Rigidbody2D>();
+    }
+
+    void PlayerVec()
+    {
+        if(InputSystemManager.Instance._vec1.x > 0)
+        {
+            transform.localScale = new Vector3(-0.15f, transform.localScale.y, transform.localScale.z);
+        }
+        else if(InputSystemManager.Instance._vec1.x < 0)
+        {
+            transform.localScale = new Vector3(0.15f, transform.localScale.y, transform.localScale.z);
+        }
     }
 
     void Anim()
