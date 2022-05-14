@@ -698,7 +698,7 @@ PrefabInstance:
     - target: {fileID: 8339512032797333330, guid: 0fa353b90ac3975439a9aa194d1f6a07,
         type: 3}
       propertyPath: VelocityModule.orbitalY.scalar
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8339512032797333330, guid: 0fa353b90ac3975439a9aa194d1f6a07,
         type: 3}
@@ -752,6 +752,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8339512032797333330, guid: 0fa353b90ac3975439a9aa194d1f6a07,
         type: 3}
+      propertyPath: VelocityModule.orbitalOffsetX.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339512032797333330, guid: 0fa353b90ac3975439a9aa194d1f6a07,
+        type: 3}
+      propertyPath: VelocityModule.orbitalOffsetY.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339512032797333330, guid: 0fa353b90ac3975439a9aa194d1f6a07,
+        type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
       value: 4
       objectReference: {fileID: 0}
@@ -773,7 +783,7 @@ PrefabInstance:
     - target: {fileID: 8339512032797333330, guid: 0fa353b90ac3975439a9aa194d1f6a07,
         type: 3}
       propertyPath: VelocityModule.x.maxCurve.m_PostInfinity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8339512032797333330, guid: 0fa353b90ac3975439a9aa194d1f6a07,
         type: 3}
