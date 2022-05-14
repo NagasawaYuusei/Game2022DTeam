@@ -15,7 +15,7 @@ public class TitleManager : MonoBehaviour
     {
         if (_pressAnyKeyAction.triggered)
         {
-            //シーン読み込み、アニメーション読み込みなどなど
+            
         }
     }
 }
