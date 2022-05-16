@@ -198,6 +198,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 83031461}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &83031463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7476611058200757275, guid: 80405c9edd0fb7a46903c2b0e6a75ff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 83031461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &111068276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,7 +3646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4170341082664877913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.96, y: -8.675, z: 0}
+  m_LocalPosition: {x: -4.2, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3671,7 +3677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4170341083198586045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.45, y: -8.675, z: 0}
+  m_LocalPosition: {x: 14.5, y: -3.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3740,7 +3746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1d2d95237a68f44ad8edef64d39bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 83031463}
 --- !u!4 &7480402196315288936
 Transform:
   m_ObjectHideFlags: 0
@@ -3786,7 +3792,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.1139412, y: 6.3582945}
+  m_Offset: {x: 4.1630635, y: 6.3582945}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3797,7 +3803,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.326828, y: 17.752974}
+  m_Size: {x: 3.2285833, y: 17.752974}
   m_EdgeRadius: 0
 --- !u!114 &7480402196777985235
 MonoBehaviour:
@@ -3811,7 +3817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9a424d1a5c8f841b3229e95953dcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: GirlStage2
+  _sceneName: Floor3-4
   _posNum: 1
 --- !u!4 &7480402196777985244
 Transform:
@@ -3821,7 +3827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7480402196777985245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.8, y: -6.4, z: 0}
+  m_LocalPosition: {x: -11.66, y: -6.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
