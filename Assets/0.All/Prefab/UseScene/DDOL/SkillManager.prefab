@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020090417001439888}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   - {fileID: 2020090418250430611}
   - {fileID: 2020090417240491560}
   _particleTag: GrapPlayer
-  _nowSetSkillsTest: 010000000000000000000000
+  _nowSetSkillsTest: 080000000200000001000000
   _isDebugSetSkills: 1
 --- !u!1 &2020090417240491560
 GameObject:
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b0f641b41836d409f362e344c35a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blinkSpeed: 10
+  _blinkSpeed: 4
   _waitTime: 0.1
 --- !u!1 &2020090417575185897
 GameObject:
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6a2d0285dc90f49b628582f0715826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpUpValue: 1.5
+  _jumpUpValue: 0.65
   _flowValue: 0.7
 --- !u!1 &2020090417726308513
 GameObject:
