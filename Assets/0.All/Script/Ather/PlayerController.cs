@@ -24,6 +24,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
 
     bool _dead;
     bool _speed;
+    bool _isJump;
 
     public bool On { set { _on = value; } }
     public float JumpSpeed { get { return _jumpSpeed; } }
@@ -95,8 +96,9 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
 
         _anim.SetBool("Dead", _dead);
         _anim.SetBool("IsGrounded", IsGrounded());
-        _anim.SetBool("IsJump", IsGrounded());
+        _anim.SetBool("IsJump", _isJump);
         _anim.SetBool("Move", _speed);
+        _isJump = false;
     }
 
     /// <summary>
@@ -184,7 +186,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
                 StartCoroutine(Vibration(1, 1, _shakeTime));
                 return;
             }
-
+            _isJump = true;
             JumpMethod();
         }
     }
