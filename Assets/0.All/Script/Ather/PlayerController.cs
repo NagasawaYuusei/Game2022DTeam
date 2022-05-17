@@ -63,7 +63,26 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
 
     void PlayerVec()
     {
-        if(InputSystemManager.Instance._vec1.x > 0)
+        if (_mc.activeSelf || _pc.activeSelf)
+        {
+            if (_mc.activeSelf)
+            {
+                if (_mc.GetComponent<MindControl>().IsCurrentControl)
+                {
+                    return;
+                }
+            }
+
+            if (_pc.activeSelf)
+            {
+                if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+                {
+                    return;
+                }
+            }
+        }
+
+        if (InputSystemManager.Instance._vec1.x > 0)
         {
             transform.localScale = new Vector3(-0.15f, transform.localScale.y, transform.localScale.z);
         }
