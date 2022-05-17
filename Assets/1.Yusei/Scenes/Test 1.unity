@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &45900701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1589,7 +1589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1031734741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2874,7 +2874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1665084831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2939,7 +2939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1675011630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,7 +2953,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acfFile: "\u8B20\u4ED9\u30FB\u7E5D\u8F14\u304B\u7E5D\uFF6B\u7E67\uFF7F\u7E67\u30FBgame_taisyo.acf"
-  cueSheets: []
+  cueSheets:
+  - name: "\u8B20\u4ED9\u30FB\u7E5D\u8F14\u304B\u7E5D\uFF6B\u7E67\uFF7F\u7E67\u30FBBGM"
+    acbFile: "\u8B20\u4ED9\u30FB\u7E5D\u8F14\u304B\u7E5D\uFF6B\u7E67\uFF7F\u7E67\u30FBBGM.acb"
+    awbFile: "\u8B20\u4ED9\u30FB\u7E5D\u8F14\u304B\u7E5D\uFF6B\u7E67\uFF7F\u7E67\u30FBBGM.awb"
+    loaderStatus: 0
   dspBusSetting: 
   dontDestroyOnLoad: 0
   dontRemoveExistsCueSheet: 0
@@ -4003,16 +4007,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
-        type: 3}
-      propertyPath: _nowSetSkillsTest.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
-        type: 3}
-      propertyPath: _nowSetSkillsTest.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86b29c950527f09439a034fe1caa5b91, type: 3}
 --- !u!1001 &2193186630365120518
@@ -4158,6 +4152,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7476611058200757252, guid: 80405c9edd0fb7a46903c2b0e6a75ff2,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476611058200757252, guid: 80405c9edd0fb7a46903c2b0e6a75ff2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476611058200757252, guid: 80405c9edd0fb7a46903c2b0e6a75ff2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476611058200757252, guid: 80405c9edd0fb7a46903c2b0e6a75ff2,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.45
       objectReference: {fileID: 0}
@@ -4206,10 +4215,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7476611058200757252, guid: 80405c9edd0fb7a46903c2b0e6a75ff2,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7476611058200757275, guid: 80405c9edd0fb7a46903c2b0e6a75ff2,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8227017068089398404, guid: 80405c9edd0fb7a46903c2b0e6a75ff2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80405c9edd0fb7a46903c2b0e6a75ff2, type: 3}
@@ -4797,7 +4816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9a424d1a5c8f841b3229e95953dcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: Test 1
+  _sceneName: Test
   _posNum: 1
 --- !u!4 &7642623112472461340
 Transform:
