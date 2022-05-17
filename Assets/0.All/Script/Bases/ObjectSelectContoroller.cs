@@ -10,6 +10,8 @@ public class ObjectSelectContoroller : MonoBehaviour
     {
         List<GameObject> goList = new List<GameObject>();
         GameObject[] gos = GameObject.FindGameObjectsWithTag(tag);
+        if (gos.Length == 0)
+            return;
         if (!gos[0])
             return;
         if(_goList.Count != 0)
@@ -50,7 +52,7 @@ public class ObjectSelectContoroller : MonoBehaviour
 
     protected virtual GameObject Change(int i)
     {
-        if (_nowNum + i > 0 && _nowNum + i < _goList.Count - 1)
+        if (_nowNum + i >= 0 && _nowNum + i <= _goList.Count - 1)
         {
             _nowNum += i;
         }

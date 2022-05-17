@@ -23,8 +23,8 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     Animator _anim;
 
     bool _dead;
-    bool _isJump;
     bool _speed;
+    bool _isJump;
 
     public bool On { set { _on = value; } }
     public float JumpSpeed { get { return _jumpSpeed; } }
@@ -75,10 +75,30 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
 
     void Anim()
     {
+        if (_mc.activeSelf || _pc.activeSelf)
+        {
+            if (_mc.activeSelf)
+            {
+                if (_mc.GetComponent<MindControl>().IsCurrentControl)
+                {
+                    return;
+                }
+            }
+
+            if (_pc.activeSelf)
+            {
+                if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+                {
+                    return;
+                }
+            }
+        }
+
         _anim.SetBool("Dead", _dead);
         _anim.SetBool("IsGrounded", IsGrounded());
         _anim.SetBool("IsJump", _isJump);
         _anim.SetBool("Move", _speed);
+        _isJump = false;
     }
 
     /// <summary>
@@ -160,14 +180,13 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
-            _isJump = true;
             if (_sj.activeSelf)
             {
                 SuperJump.Instance.SuperJumpMethod();
                 StartCoroutine(Vibration(1, 1, _shakeTime));
                 return;
             }
-
+            _isJump = true;
             JumpMethod();
         }
     }
@@ -196,7 +215,6 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         bool jumpray = Physics2D.Raycast(transform.position, Vector2.down, _groundLength, _layerMask);
         Debug.DrawRay(transform.position, Vector2.down * _groundLength);
         if (!jumpray) InputSystemManager.Instance._isJump = false;
-        else _isJump = false;
         return jumpray;
     }
 
