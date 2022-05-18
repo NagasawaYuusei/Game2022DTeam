@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallPicture : MonoBehaviour
+public class FallObj : MonoBehaviour
 {
     [Tooltip("オブジェクトのアニメーション")] Animator _anim;
     [Tooltip("オブジェクトのサウンド")] AudioSource _audio;
