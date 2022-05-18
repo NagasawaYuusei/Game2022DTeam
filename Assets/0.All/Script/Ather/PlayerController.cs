@@ -199,13 +199,14 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
+            _isJump = true;
+            AudioManager.Instance.SEPlay("SE", "jump", this.gameObject, false);
             if (_sj.activeSelf)
             {
                 SuperJump.Instance.SuperJumpMethod();
                 StartCoroutine(Vibration(1, 1, _shakeTime));
                 return;
             }
-            _isJump = true;
             JumpMethod();
         }
     }
