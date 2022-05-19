@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjSpown : MonoBehaviour
+public class ObjLoopSpown : MonoBehaviour
 {
     [Header("スポーンさせたいオブジェクト")]
     [SerializeField, Tooltip("スポーンさせたいオブジェクト")] GameObject _spownObj;
