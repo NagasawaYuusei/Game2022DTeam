@@ -73,6 +73,7 @@ public class MindControl : ObjectSelectContoroller
                 _cvc.Follow = _mindEnemy.transform;
                 _isCurrentControl = true;
             }
+            AudioManager.Instance.SEPlay("SE", "sennou", GameObject.FindGameObjectWithTag("Player"), false);
             InputSystemManager.Instance._isSkill = false;
         }
         else if(InputSystemManager.Instance._isSkill && _isCurrentControl)
@@ -88,6 +89,9 @@ public class MindControl : ObjectSelectContoroller
             EnemyMove();
             if(InputSystemManager.Instance._vec2.y > 0 && !on)
             {
+                if (_mindEnemy == Change(1))
+                    return;
+                AudioManager.Instance.SEPlay("SE", "sennou", GameObject.FindGameObjectWithTag("Player"), false);
                 _mindEnemy = Change(1);
                 _enemyRb = _mindEnemy.GetComponent<Rigidbody2D>();
                 _cvc.Follow = _mindEnemy.transform;
@@ -95,6 +99,9 @@ public class MindControl : ObjectSelectContoroller
             }
             else if(InputSystemManager.Instance._vec2.y < 0 && !on)
             {
+                if (_mindEnemy == Change(-1))
+                    return;
+                AudioManager.Instance.SEPlay("SE", "sennou", GameObject.FindGameObjectWithTag("Player"), false);
                 _mindEnemy = Change(-1);
                 _enemyRb = _mindEnemy.GetComponent<Rigidbody2D>();
                 _cvc.Follow = _mindEnemy.transform;

@@ -6,6 +6,7 @@ public class BlinkSkill : MonoBehaviour
     Rigidbody2D _playerRb;
     [SerializeField] float _blinkSpeed;
     [SerializeField] float _waitTime;
+    bool _firstUse;
 
     void Start()
     {
@@ -24,9 +25,16 @@ public class BlinkSkill : MonoBehaviour
             _playerRb.AddForce(InputSystemManager.Instance._vec1 * _blinkSpeed, ForceMode2D.Impulse);
             if(InputSystemManager.Instance._vec1 == Vector2.zero)
             {
-                _playerRb.AddForce(Vector2.right * _blinkSpeed,ForceMode2D.Impulse);
+                InputSystemManager.Instance._isSkill = false;
+                return;
             }
-            StartCoroutine(WaitTime());
+            if(!_firstUse)
+            {
+                AudioManager.Instance.SEPlay("SE", "syunkanidou", GameObject.FindWithTag("Player"), false);
+                _firstUse = true;
+                StartCoroutine(WaitTime());
+            }
+
         }
     }
 
@@ -35,6 +43,7 @@ public class BlinkSkill : MonoBehaviour
         yield return new WaitForSeconds(_waitTime);
         InputSystemManager.Instance._isSkill = false;
         _playerRb.velocity = Vector2.zero;
+        _firstUse = false;
         yield return null;
     }
 }

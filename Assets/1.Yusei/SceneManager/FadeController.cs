@@ -9,13 +9,14 @@ public class FadeController : MonoBehaviour
     [Tooltip("フェードスピード")]
     [SerializeField]
     private float _fadeSpeed = 1f;
+    [Tooltip("フェードする画像")]
+    [SerializeField]
     private Image _fadeImage = default;
     [Tooltip("開始時の色")]
     [SerializeField]
     private Color _startColor = Color.black;
     private void Awake()
     {
-        _fadeImage = GameObject.Find("FadeBlack").GetComponent<Image>();
         instance = this;
         _fadeImage.gameObject.SetActive(false);
     }
