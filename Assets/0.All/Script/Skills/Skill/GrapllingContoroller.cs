@@ -9,7 +9,7 @@ public class GrapllingContoroller : ObjectSelectContoroller
     [SerializeField] float _grapSpeed = 5;
 
     Rigidbody2D _playerRb;
-    void Start()
+    public void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _lr = _player.GetComponent<LineRenderer>();

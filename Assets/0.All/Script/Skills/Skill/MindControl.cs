@@ -46,7 +46,7 @@ public class MindControl : ObjectSelectContoroller
         }
     }
 
-    void Start()
+    public void Start()
     {
         _cvc = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
     }

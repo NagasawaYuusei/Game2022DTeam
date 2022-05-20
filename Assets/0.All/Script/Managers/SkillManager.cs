@@ -27,7 +27,7 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
         SkillManager.Instance.FirstSetSkill();
     }
 
-    void Start()
+    public void Start()
     {
         _particle = GameObject.FindGameObjectWithTag(_particleTag);
     }
