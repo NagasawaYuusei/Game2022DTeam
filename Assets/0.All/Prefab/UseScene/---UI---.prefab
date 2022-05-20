@@ -1396,6 +1396,7 @@ GameObject:
   - component: {fileID: 7804665678398041763}
   - component: {fileID: 6321131664229671044}
   - component: {fileID: 4938236942927625210}
+  - component: {fileID: 8044548517464912561}
   m_Layer: 5
   m_Name: SkillSet
   m_TagString: Untagged
@@ -1499,6 +1500,26 @@ MonoBehaviour:
   - {fileID: 481445287922182516}
   - {fileID: 8669447788082425981}
   - {fileID: 7931775139818979868}
+--- !u!95 &8044548517464912561
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477705654885694970}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad46a9b5928336a4eb07d8bc96506c35, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4911358055453369695
 GameObject:
   m_ObjectHideFlags: 0
