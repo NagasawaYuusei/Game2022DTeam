@@ -11,11 +11,13 @@ public class TitleManager : MonoBehaviour
     private void OnEnable() => _pressAnyKeyAction.Enable();
     private void OnDisable() => _pressAnyKeyAction.Disable();
 
+    [SerializeField] string _titleName;
+
     void Update()
     {
         if (_pressAnyKeyAction.triggered)
         {
-            
+            SceneController.Instance.ChangeScene(_titleName);
         }
     }
 }

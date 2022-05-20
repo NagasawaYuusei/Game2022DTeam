@@ -26,7 +26,7 @@ public class Small : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").transform.Find("4.5SmallPlayerMini").gameObject.SetActive(false);
             }
             _isSmall = !_isSmall;
-            AudioManager.Instance.SEPlay("SE", "minimum_ver2", GameObject.FindGameObjectWithTag("Player"), false);
+            AudioManager.Instance.SEPlay("SE", "minimum_ver2", GameObject.FindGameObjectWithTag("Player"), false, 0.3f);
             InputSystemManager.Instance._isSkill = false;
         }
     }

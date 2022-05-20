@@ -152,7 +152,8 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
             _particle.GetComponentInParent<ParticleSystem>().Play();
         }
 
-        AudioManager.Instance.SEPlay("SE", "change_skill", GameObject.FindWithTag("Player"), false);
+        PlayerController.Instance.SetAnim();
+        AudioManager.Instance.SEPlay("SE", "change_skill", GameObject.FindWithTag("Player"), false, 0.3f);
     }
 
     /// <summary>
