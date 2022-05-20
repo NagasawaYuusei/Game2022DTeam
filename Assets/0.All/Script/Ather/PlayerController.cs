@@ -200,7 +200,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
             _isJumpAnim = true;
-            AudioManager.Instance.SEPlay("SE", "jump", this.gameObject, false);
+            AudioManager.Instance.SEPlay("SE", "jump", this.gameObject, false, 0.3f);
             if (_sj.activeSelf)
             {
                 SuperJump.Instance.SuperJumpMethod();

@@ -10,6 +10,7 @@ public class BlinkSkill : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("a");
         _playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
 
@@ -30,7 +31,7 @@ public class BlinkSkill : MonoBehaviour
             }
             if(!_firstUse)
             {
-                AudioManager.Instance.SEPlay("SE", "syunkanidou", GameObject.FindWithTag("Player"), false);
+                AudioManager.Instance.SEPlay("SE", "syunkanidou", GameObject.FindWithTag("Player"), false, 0.3f);
                 _firstUse = true;
                 StartCoroutine(WaitTime());
             }

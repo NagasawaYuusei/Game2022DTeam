@@ -3,7 +3,7 @@ using UnityEngine;
 public class AudioManager : SingletonMonoBehaviour<AudioManager>
 {
     protected override bool dontDestroyOnLoad { get { return true; } }
-    public void SEPlay(string sheet, string name, GameObject go, bool loop)
+    public void SEPlay(string sheet, string name, GameObject go, bool loop, float volume = 0)
     {
         CriAtomSource audio;
         if(!go.TryGetComponent<CriAtomSource>(out audio))
@@ -13,6 +13,14 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         audio.cueSheet = sheet;
         audio.cueName = name;
         audio.loop = loop;
+        if(volume > 0)
+        {
+            audio.volume = volume;
+        }
+        else
+        {
+            audio.volume = 1;
+        }
         audio.Play();
     }
 
