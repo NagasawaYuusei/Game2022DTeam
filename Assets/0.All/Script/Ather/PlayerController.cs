@@ -22,9 +22,9 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     GameObject _gh;
     Animator _anim;
 
-    bool _dead;
-    bool _speed;
-    bool _isJump;
+    bool _isDeadAnim;
+    bool _isMoveAnim;
+    bool _isJumpAnim;
 
     public bool On { set { _on = value; } }
     public float JumpSpeed { get { return _jumpSpeed; } }
@@ -113,11 +113,11 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             }
         }
 
-        _anim.SetBool("Dead", _dead);
+        _anim.SetBool("Dead", _isDeadAnim);
         _anim.SetBool("IsGrounded", IsGrounded());
-        _anim.SetBool("IsJump", _isJump);
-        _anim.SetBool("Move", _speed);
-        _isJump = false;
+        _anim.SetBool("IsJump", _isJumpAnim);
+        _anim.SetBool("Move", _isMoveAnim);
+        _isJumpAnim = false;
     }
 
     /// <summary>
@@ -162,11 +162,11 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         _rb.velocity = new Vector2(InputSystemManager.Instance._vec1.x * _moveSpeed, _rb.velocity.y);
         if(InputSystemManager.Instance._vec1.x == 0)
         {
-            _speed = false;
+            _isMoveAnim = false;
         }
         else
         {
-            _speed = true;
+            _isMoveAnim = true;
         }
     }
 
@@ -199,7 +199,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         
         if (InputSystemManager.Instance._isJump && IsGrounded())
         {
-            _isJump = true;
+            _isJumpAnim = true;
             AudioManager.Instance.SEPlay("SE", "jump", this.gameObject, false);
             if (_sj.activeSelf)
             {
@@ -223,6 +223,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     public void JumpMethod()
     {
         _rb.velocity = Vector2.up * _jumpSpeed;
+        InputSystemManager.Instance._isJump = false;
         StartCoroutine(Vibration(1, 1, _shakeTime));
     }
 

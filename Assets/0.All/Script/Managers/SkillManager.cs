@@ -151,6 +151,8 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
             _playerSkillSprites[int.Parse(str[0]) - 1].SetActive(true);
             _particle.GetComponentInParent<ParticleSystem>().Play();
         }
+
+        AudioManager.Instance.SEPlay("SE", "change_skill", GameObject.FindWithTag("Player"), false);
     }
 
     /// <summary>
