@@ -10,7 +10,11 @@ public class BlinkSkill : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("a");
+        Ready();
+    }
+
+    public void Ready()
+    {
         _playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
 

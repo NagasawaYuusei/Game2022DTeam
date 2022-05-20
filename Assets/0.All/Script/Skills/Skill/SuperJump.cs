@@ -6,7 +6,7 @@ public class SuperJump : SingletonMonoBehaviour<SuperJump>
     [SerializeField] float _jumpUpValue = 1.5f;
     [SerializeField] float _flowValue = 0.5f;
     Rigidbody2D _playerRb;
-    void Start()
+    public void Start()
     {
         _playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
