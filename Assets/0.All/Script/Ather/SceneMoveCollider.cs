@@ -7,12 +7,30 @@ public class SceneMoveCollider : MonoBehaviour
 {
     [Tooltip("ˆÚ“®‚µ‚½‚¢ƒV[ƒ“‚Ì–¼‘O"), SerializeField] string _sceneName;
     [Tooltip("ˆÚ“®‚µ‚½‚¢êŠ‚Ì”Ô†"), SerializeField] int _posNum;
-    private void OnTriggerEnter2D(Collider2D collision)
+    [Tooltip("")] bool _onTrigger;
+
+    void Update()
     {
-        if(collision.tag == "Player" && InputSystemManager.Instance._vec1.y > 0)
+        if(InputSystemManager.Instance._vec1.y > 0 && _onTrigger)
         {
             GameManager.Instance.PosNum = _posNum;
             SceneController.Instance.ChangeScene(_sceneName);
+            _onTrigger = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            _onTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            _onTrigger = false;
         }
     }
 }
