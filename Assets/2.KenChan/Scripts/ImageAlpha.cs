@@ -26,7 +26,6 @@ public class ImageAlpha : MonoBehaviour
                 0f,
                 0.5f
                 );
-            Debug.Log("‚ ‚ ‚ ");
         }
     }
 
@@ -44,7 +43,6 @@ public class ImageAlpha : MonoBehaviour
                 1f,
                 0.5f
                 );
-            Debug.Log("‚¢‚¢‚¢");
         }
     }
 
