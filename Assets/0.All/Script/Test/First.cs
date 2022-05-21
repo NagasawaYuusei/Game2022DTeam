@@ -1,8 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class First : MonoBehaviour
 {
+    void Awake()
+    {
+        GameObject bgm = GameObject.Find("syouzyonoheya(CriAtomSource)");
+        if(bgm)
+        {
+            bgm.GetComponent<BGMContoroller>().Awake();
+        }
+    }
+
     void Start()
     {
         GameObject skill = GameObject.Find("SkillManager");

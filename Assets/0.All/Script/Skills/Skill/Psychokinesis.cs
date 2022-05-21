@@ -67,7 +67,7 @@ public class Psychokinesis : ObjectSelectContoroller
                 _isNowControl = true;
             }
             InputSystemManager.Instance._isSkill = false;
-            AudioManager.Instance.SEPlay("SE", "nenriki", GameObject.FindGameObjectWithTag("Player"), true, 0.01f);
+            AudioManager.Instance.SEPlay("SE", "nenriki", GameObject.FindGameObjectWithTag("Player"), true, 0.04f);
         }
         else if (InputSystemManager.Instance._isSkill && _isNowControl)
         {

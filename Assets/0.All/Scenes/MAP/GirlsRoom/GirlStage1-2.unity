@@ -3415,6 +3415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944402164}
   - component: {fileID: 944402163}
+  - component: {fileID: 944402165}
   m_Layer: 0
   m_Name: syouzyonoheya(CriAtomSource)
   m_TagString: Untagged
@@ -3470,6 +3471,18 @@ Transform:
   m_Father: {fileID: 293176045}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &944402165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944402162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99024b978d1f36a4f8a314cc61f244ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1040674585
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,6 +4097,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
+        type: 3}
+      propertyPath: _isDebugSetSkills
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
+        type: 3}
+      propertyPath: _nowSetSkillsTest.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
+        type: 3}
+      propertyPath: _nowSetSkillsTest.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
+        type: 3}
+      propertyPath: _nowSetSkillsTest.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86b29c950527f09439a034fe1caa5b91, type: 3}
@@ -11258,7 +11291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4541560841254792688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -64.28, y: -8.67, z: 0}
+  m_LocalPosition: {x: 42.1, y: -8.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11341,7 +11374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9a424d1a5c8f841b3229e95953dcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: GirlStage1
+  _sceneName: GirlStage1-1
   _posNum: 2
 --- !u!61 &7001233409864693151
 BoxCollider2D:

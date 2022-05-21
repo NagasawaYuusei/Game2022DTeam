@@ -24,6 +24,7 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
         if (_isDebugSetSkills)
             SkillManager.Instance.SetSkills(_nowSetSkillsTest);
         SkillManager.Instance.FirstSetSkill();
+        _canUseSkillList = new bool[_skillList.Length];
     }
 
     public void Start()
