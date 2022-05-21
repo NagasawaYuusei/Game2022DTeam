@@ -5,14 +5,13 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
     protected override bool dontDestroyOnLoad { get { return true; } }
     [Tooltip("現在のスキルの順番")] int _nowSkillNum;
     [SerializeField, Tooltip("すべてのスキルのリスト")] GameObject[] _skillList;
+    [SerializeField] bool[] _canUseSkillList;
     GameObject[] _playerSkillSprites;
     [Tooltip("セットされてるスキルのゲームオブジェクト")] GameObject[] _nowSetSkills = new GameObject[3];
     bool _isNowSet;
     int _nowSetSkillNum;
-    bool _isSkillUI;
     public int NowSkillNum { get { return _nowSkillNum; } set { _nowSkillNum = value; } }
     public GameObject[] NowSetSkills { get { return _nowSetSkills; } set { _nowSetSkills = value; } }
-    public bool IsSkillUI => _isSkillUI;
     GameObject _particle;
     [SerializeField] string _particleTag;
     [Tooltip("セットされてるスキル"), SerializeField] int[] _nowSetSkillsTest = new int[3];
@@ -117,11 +116,6 @@ public class SkillManager : SingletonMonoBehaviour<SkillManager>
     {
         _isNowSet = false;
         _nowSetSkillNum = 0;
-    }
-
-    public void SkillUI()
-    {
-        _isSkillUI = !_isSkillUI;
     }
 
     /// <summary>

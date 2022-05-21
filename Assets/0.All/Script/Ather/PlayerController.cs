@@ -202,6 +202,8 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     /// </summary>
     void PlayerJump()
     {
+        if (InputSystemManager.Instance._cantPlayerInput)
+            return;
         if (_mc.activeSelf || _pc.activeSelf || _lt.activeSelf)
         {
             if (_mc.activeSelf)
@@ -233,7 +235,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         }
 
         
-        if (InputSystemManager.Instance._isJump && IsGrounded())
+        if (InputSystemManager.Instance._isJump && IsGrounded() && !InputSystemManager.Instance._cantPlayerInput)
         {
             _isJumpAnim = true;
             AudioManager.Instance.SEPlay("SE", "jump", this.gameObject, false, 0.3f);
@@ -252,6 +254,11 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         if (SkillManager.Instance.NowSetSkills[SkillManager.Instance.NowSkillNum])
         {
             GameObject obj = transform.Find(SkillManager.Instance.NowSetSkills[SkillManager.Instance.NowSkillNum].name).gameObject;
+            _anim = obj.GetComponent<Animator>();
+        }
+        else
+        {
+            GameObject obj = transform.Find("0.Normal").gameObject;
             _anim = obj.GetComponent<Animator>();
         }
     }
