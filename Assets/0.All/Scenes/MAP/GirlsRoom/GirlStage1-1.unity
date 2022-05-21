@@ -2690,6 +2690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1394065453}
   - component: {fileID: 1394065452}
+  - component: {fileID: 1394065454}
   m_Layer: 0
   m_Name: syouzyonoheya(CriAtomSource)
   m_TagString: Untagged
@@ -2745,6 +2746,18 @@ Transform:
   m_Father: {fileID: 78437883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1394065454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394065451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99024b978d1f36a4f8a314cc61f244ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1439325788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4425,6 +4438,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
+        type: 3}
+      propertyPath: _isDebugSetSkills
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
+        type: 3}
+      propertyPath: _nowSetSkillsTest.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
+        type: 3}
+      propertyPath: _nowSetSkillsTest.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020090417001439891, guid: 86b29c950527f09439a034fe1caa5b91,
+        type: 3}
+      propertyPath: _nowSetSkillsTest.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86b29c950527f09439a034fe1caa5b91, type: 3}
 --- !u!1001 &2193186630365120518
@@ -5216,7 +5249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9a424d1a5c8f841b3229e95953dcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: GirlStage2
+  _sceneName: GirlStage1-2
   _posNum: 1
 --- !u!4 &7642623112472461340
 Transform:
