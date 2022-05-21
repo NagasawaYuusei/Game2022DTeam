@@ -20,6 +20,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     [Tooltip("SuperJump")] GameObject _sj;
     GameObject _bl;
     GameObject _gh;
+    GameObject _lt;
     Animator _anim;
 
     bool _isDeadAnim;
@@ -34,6 +35,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
         _pc = SkillManager.Instance.transform.Find("1.Psychokinesis").gameObject;
         _mc = SkillManager.Instance.transform.Find("2.MindContorol").gameObject;
         _sj = SkillManager.Instance.transform.Find("3.SuperJump").gameObject;
+        _lt = SkillManager.Instance.transform.Find("6.Light").gameObject;
         _bl = SkillManager.Instance.transform.Find("8.Blink").gameObject;
         _gh = SkillManager.Instance.transform.Find("7.GrapringHook" ).gameObject;
         StartSetUp();
@@ -63,7 +65,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
 
     void PlayerVec()
     {
-        if (_mc.activeSelf || _pc.activeSelf)
+        if (_mc.activeSelf || _pc.activeSelf || _lt.activeSelf)
         {
             if (_mc.activeSelf)
             {
@@ -76,6 +78,14 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             if (_pc.activeSelf)
             {
                 if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+                {
+                    return;
+                }
+            }
+
+            if (_lt.activeSelf)
+            {
+                if (_lt.GetComponent<LightSkill>().IsNowControl)
                 {
                     return;
                 }
@@ -94,7 +104,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
 
     void Anim()
     {
-        if (_mc.activeSelf || _pc.activeSelf)
+        if (_mc.activeSelf || _pc.activeSelf || _lt.activeSelf)
         {
             if (_mc.activeSelf)
             {
@@ -107,6 +117,14 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             if (_pc.activeSelf)
             {
                 if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+                {
+                    return;
+                }
+            }
+
+            if (_lt.activeSelf)
+            {
+                if (_lt.GetComponent<LightSkill>().IsNowControl)
                 {
                     return;
                 }
@@ -136,9 +154,9 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     /// </summary>
     void PlayerMove()
     {
-        if (_mc.activeSelf || _pc.activeSelf)
+        if (_mc.activeSelf || _pc.activeSelf || _lt.activeSelf)
         {
-            if(_mc.activeSelf)
+            if (_mc.activeSelf)
             {
                 if (_mc.GetComponent<MindControl>().IsCurrentControl)
                 {
@@ -146,10 +164,19 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
                     return;
                 }
             }
-            
-            if(_pc.activeSelf)
+
+            if (_pc.activeSelf)
             {
                 if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+                {
+                    _rb.velocity = Vector2.zero;
+                    return;
+                }
+            }
+
+            if (_lt.activeSelf)
+            {
+                if (_lt.GetComponent<LightSkill>().IsNowControl)
                 {
                     _rb.velocity = Vector2.zero;
                     return;
@@ -175,7 +202,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
     /// </summary>
     void PlayerJump()
     {
-        if (_mc.activeSelf || _pc.activeSelf)
+        if (_mc.activeSelf || _pc.activeSelf || _lt.activeSelf)
         {
             if (_mc.activeSelf)
             {
@@ -189,6 +216,15 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             if (_pc.activeSelf)
             {
                 if (_pc.GetComponent<Psychokinesis>().IsNowControl)
+                {
+                    _rb.velocity = Vector2.zero;
+                    return;
+                }
+            }
+
+            if (_lt.activeSelf)
+            {
+                if (_lt.GetComponent<LightSkill>().IsNowControl)
                 {
                     _rb.velocity = Vector2.zero;
                     return;

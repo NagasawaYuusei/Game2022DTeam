@@ -8,12 +8,7 @@ public class BlinkSkill : MonoBehaviour
     [SerializeField] float _waitTime;
     bool _firstUse;
 
-    void Start()
-    {
-        Ready();
-    }
-
-    public void Ready()
+    public void Start()
     {
         _playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }

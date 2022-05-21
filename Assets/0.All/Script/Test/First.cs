@@ -8,17 +8,17 @@ public class First : MonoBehaviour
         GameObject skill = GameObject.Find("SkillManager");
         if (skill)
             skill.GetComponent<SkillManager>().Start();
-        skill = GameObject.Find("2.MindContorol");
+        skill = GameObject.Find("SkillManager").transform.Find("2.MindContorol").gameObject;
         if (skill)
             skill.GetComponent<MindControl>().Start();
-        skill = GameObject.Find("3.SuperJump");
+        skill = GameObject.Find("SkillManager").transform.Find("3.SuperJump").gameObject;
         if (skill)
             skill.GetComponent<SuperJump>().Start();
-        skill = GameObject.Find("7.GrapringHook");
+        skill = GameObject.Find("SkillManager").transform.Find("7.GrapringHook").gameObject;
         if (skill)
             skill.GetComponent<GrapllingContoroller>().Start();
-        skill = GameObject.Find("8.Blink");
+        skill = GameObject.Find("SkillManager").transform.Find("8.Blink").gameObject;
         if (skill)
-            skill.GetComponent<BlinkSkill>().Ready();
+            skill.GetComponent<BlinkSkill>().Start();
     }
 }
