@@ -10,10 +10,17 @@ public class SkillSetPos : MonoBehaviour
 
     private void Update()
     {
-        if (InputSystemManager.Instance._vec1.y > _vec.y && _on)
+        if (InputSystemManager.Instance._vec1.y > _vec.y && _on && !InputSystemManager.Instance._cantPlayerInput)
         {
             GameObject UI = GameObject.Find("---UI---").transform.Find("SkillSet").gameObject;
+            InputSystemManager.Instance.ChangePlayerCanInput();
             UI.SetActive(true);
+        }
+
+        if(InputSystemManager.Instance._isJump && _on && InputSystemManager.Instance._cantPlayerInput)
+        {
+            InputSystemManager.Instance.ChangePlayerCanInput();
+            GameObject.Find("SkillSet").gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
