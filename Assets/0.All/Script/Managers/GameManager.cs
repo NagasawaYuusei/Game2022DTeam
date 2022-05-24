@@ -14,6 +14,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     /// <summary>ゲーム開始時かどうか</summary>
     public bool First { get => _first; set => _first = value; }
 
+    public bool IsPlayerHide => _isPlayerHide;
+
     /// <summary>
     /// プレイヤーのハイド状態を変更する
     /// </summary>

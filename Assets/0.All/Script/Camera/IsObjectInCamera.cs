@@ -3,13 +3,7 @@ using UnityEngine;
 public class IsObjectInCamera : MonoBehaviour
 {
     bool _isObjectInCamera;
-    public bool IsObjectInCameraState
-    {
-        get
-        {
-            return _isObjectInCamera;
-        }
-    }
+    public bool IsObjectInCameraState => _isObjectInCamera;
 
     void OnBecameVisible()
     {
