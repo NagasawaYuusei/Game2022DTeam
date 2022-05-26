@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public class YellowHead : MonoBehaviour
+public class Bug1 : MonoBehaviour
 {
-    //黄色い頭
-    //Idol：プレイヤーが一定範囲内に入ってくるまで待機
-    //Move：一定範囲内に入ってきたらプレイヤーの方へ移動
-
+    //虫１
+    //Move：空中で反復横移動
     GameObject _player;
     Transform _playerTransform;
     Rigidbody2D _rb;
@@ -15,7 +13,6 @@ public class YellowHead : MonoBehaviour
     [SerializeField, Tooltip("エネミーのスピード")] float _moveSpeed;
     [SerializeField, Tooltip("検知範囲のLayerを表示")] bool _layerDebug;
     Vector2 _dir;
-    Animator _anim;
 
     void Start()
     {
@@ -25,10 +22,8 @@ public class YellowHead : MonoBehaviour
     void Update()
     {
         LayerDebug();
-        Anim();
         if (!_isObjectInCamera.IsObjectInCameraState)
             return;
-        Range();
         Active();
     }
 
@@ -37,7 +32,6 @@ public class YellowHead : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _isObjectInCamera = GetComponent<IsObjectInCamera>();
         _rb = GetComponent<Rigidbody2D>();
-        _anim = GetComponent<Animator>();
     }
 
     void LayerDebug()
@@ -47,31 +41,9 @@ public class YellowHead : MonoBehaviour
         Debug.DrawRay(transform.position, _dir, Color.red, _activeRange);
     }
 
-    void Anim()
-    {
-        _anim.SetBool("anim", _isActive);
-    }
-
-    void Range()
-    {
-        _playerTransform = _player.transform;
-        float range = Vector2.Distance(_playerTransform.position, transform.position);
-        if (range < _activeRange)
-        {
-            _dir = _playerTransform.position - transform.position;
-            _dir = _dir.normalized;
-            _dir.y = 0;
-            _isActive = true;
-        }
-        else
-        {
-            _isActive = false;
-        }
-    }
-
     void Active()
     {
-        if (!_isActive && GameManager.Instance.IsPlayerHide)
+        if (GameManager.Instance.IsPlayerHide)
             return;
         Vector3 velocity = _dir * _moveSpeed;
         _rb.AddForce(velocity * Time.deltaTime);
