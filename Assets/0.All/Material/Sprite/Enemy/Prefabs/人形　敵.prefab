@@ -1063,6 +1063,7 @@ GameObject:
   - component: {fileID: 4382095630823612580}
   - component: {fileID: 8171569770473704218}
   - component: {fileID: 2651616920088141372}
+  - component: {fileID: 2099521159798448865}
   m_Layer: 0
   m_Name: "\u4EBA\u5F62\u3000\u6575"
   m_TagString: Untagged
@@ -1157,13 +1158,25 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 100
+  m_GravityScale: 100
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2099521159798448865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267049723188658455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f1a4c54559d7d4f9534bc948dd784f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4507368474689463528
 GameObject:
   m_ObjectHideFlags: 0
