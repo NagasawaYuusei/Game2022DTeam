@@ -3665,7 +3665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playOnStart: 0
+  _playOnStart: 1
   _cueName: syouzyonoheya
   _cueSheet: BGM
   _regionOnStart: {fileID: 0}
@@ -4345,7 +4345,8 @@ GameObject:
   - component: {fileID: 450721485712972397}
   - component: {fileID: 6996570530397195987}
   - component: {fileID: 2424264753581028141}
-  m_Layer: 0
+  - component: {fileID: 6996570530397195988}
+  m_Layer: 9
   m_Name: PsyObject4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5273,6 +5274,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.81, y: 0.84}
   m_EdgeRadius: 0
+--- !u!114 &6996570530397195988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450721485712972398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f1a4c54559d7d4f9534bc948dd784f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7642623110800265640
 Transform:
   m_ObjectHideFlags: 0
@@ -5417,7 +5430,8 @@ GameObject:
   - component: {fileID: 8745493865727967357}
   - component: {fileID: 8745493865727967619}
   - component: {fileID: 8745493865727967618}
-  m_Layer: 0
+  - component: {fileID: 8745493865727967620}
+  m_Layer: 9
   m_Name: PsyObject3
   m_TagString: PsychokinesisObject
   m_Icon: {fileID: 0}
@@ -5564,6 +5578,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.21, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8745493865727967620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745493865727967352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f1a4c54559d7d4f9534bc948dd784f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &8882944503159566298
 Rigidbody2D:
   serializedVersion: 4
