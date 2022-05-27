@@ -745,8 +745,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7881352274660559208}
   - component: {fileID: 8813516063427391664}
-  - component: {fileID: 9204412700358184630}
-  - component: {fileID: 2121454094701159603}
   - component: {fileID: 816178732762005955}
   - component: {fileID: 5758119223129553400}
   m_Layer: 0
@@ -765,7 +763,7 @@ Transform:
   m_GameObject: {fileID: 9054533188110995723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.9224253, y: 1.2054048, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5742082760461778035}
@@ -798,6 +796,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+<<<<<<< HEAD
+=======
 --- !u!50 &9204412700358184630
 Rigidbody2D:
   serializedVersion: 4
@@ -831,6 +831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f1a4c54559d7d4f9534bc948dd784f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+>>>>>>> 792abe1f0fe813d4e1bc2ee94e5f21757f9286e0
 --- !u!58 &816178732762005955
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -859,8 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d277d709fccf9444db0d204c5c47de2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particle: {fileID: 5186901079587486924, guid: fac4058e75f833445b189af97d123c20,
-    type: 3}
+  _particle: {fileID: 0}
 --- !u!1 &9156326392868745680
 GameObject:
   m_ObjectHideFlags: 0
