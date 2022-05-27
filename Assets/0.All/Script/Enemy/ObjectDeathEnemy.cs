@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class ObjectDeathEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject _particle;
+    bool _playerDead;
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
+        if (collision.gameObject.tag == "Player" && !_playerDead)
+        {
+            GameManager.Instance.PlayerDeath();
+            _playerDead = true;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(collision.gameObject.tag == "PsychokinesisObject")
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if(rb.velocity.y > 1)
+            {
+                Instantiate(_particle, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+        }
     }
 }
