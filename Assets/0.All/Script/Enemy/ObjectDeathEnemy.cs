@@ -17,10 +17,10 @@ public class ObjectDeathEnemy : MonoBehaviour
         if(collision.gameObject.tag == "PsychokinesisObject")
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if(rb.velocity.y > 1)
+            if(rb.velocity.y < -5)
             {
-                Instantiate(_particle, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                _particle.SetActive(true);
+                gameObject.SetActive(false);
             }
         }
     }
