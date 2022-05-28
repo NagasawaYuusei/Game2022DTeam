@@ -12,6 +12,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     Image _fadeImage;
     bool _isMind;
     bool[] _isKey = new bool[1];
+    bool _isDead;
 
     /// <summary>シーン移動後のプレイヤーのポジションの番号</summary>
     public int PosNum { get => _posNum; set => _posNum = value; }
@@ -23,6 +24,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public bool IsMind => _isMind;
 
     public bool[] IsKey => _isKey;
+
+    public bool IsDead => _isDead;
 
     /// <summary>
     /// プレイヤーのハイド状態を変更する
@@ -46,8 +49,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         string str = SkillManager.Instance.NowSetSkills[SkillManager.Instance.NowSkillNum].name;
         Animator anim = GameObject.FindGameObjectWithTag("Player").transform.Find(str).GetComponent<Animator>();
         anim.SetBool("Dead", true);
+        _isDead = true;
         _fadeImage = GameObject.Find("DeathImage").GetComponent<Image>();
         StartCoroutine(FadeOut());
+    }
+
+    public void ChangeRestart()
+    {
+        _isDead = false;
     }
 
     IEnumerator FadeOut()
