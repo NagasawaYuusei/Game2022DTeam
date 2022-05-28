@@ -265,6 +265,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
 
     public void JumpMethod()
     {
+        _rb.gravityScale = 3;
         _rb.velocity = Vector2.up * _jumpSpeed;
         InputSystemManager.Instance._isJump = false;
         StartCoroutine(Vibration(1, 1, _shakeTime));
