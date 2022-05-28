@@ -22,6 +22,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public bool IsMind => _isMind;
 
+    public bool[] IsKey => _isKey;
+
     /// <summary>
     /// プレイヤーのハイド状態を変更する
     /// </summary>
@@ -35,6 +37,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         _isMind = !_isMind;
     }
 
+    public void IsKeyChange(int i)
+    {
+        _isKey[i] = true;
+    }
     public void PlayerDeath()
     {
         string str = SkillManager.Instance.NowSetSkills[SkillManager.Instance.NowSkillNum].name;
