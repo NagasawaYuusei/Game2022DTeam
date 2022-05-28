@@ -10,6 +10,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [Tooltip("ゲーム開始時かどうか")] bool _first;
     [Tooltip("プレイヤーがハイド状態かどうか")] bool _isPlayerHide;
     Image _fadeImage;
+    bool _isMind;
 
     /// <summary>シーン移動後のプレイヤーのポジションの番号</summary>
     public int PosNum { get => _posNum; set => _posNum = value; }
@@ -18,12 +19,19 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public bool IsPlayerHide => _isPlayerHide;
 
+    public bool IsMind => _isMind;
+
     /// <summary>
     /// プレイヤーのハイド状態を変更する
     /// </summary>
     public void ChangePlayerHide()
     {
         _isPlayerHide = !_isPlayerHide;
+    }
+
+    public void ChangeMind()
+    {
+        _isMind = !_isMind;
     }
 
     public void PlayerDeath()

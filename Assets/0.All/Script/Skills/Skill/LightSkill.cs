@@ -9,6 +9,7 @@ public class LightSkill : ObjectSelectContoroller
     bool _isNowControl;
     Color _originColor;
     bool on;
+    [SerializeField] GameObject _par;
 
     public bool IsNowControl => _isNowControl;
     void Update()
@@ -30,6 +31,7 @@ public class LightSkill : ObjectSelectContoroller
                 _isNowControl = true;
             }
             InputSystemManager.Instance._isSkill = false;
+            Instantiate(_par, GameObject.FindGameObjectWithTag("Player").transform);
             //AudioManager.Instance.SEPlay("SE", "nenriki", GameObject.FindGameObjectWithTag("Player"), true, 0.01f);
         }
         else if (InputSystemManager.Instance._isSkill && _isNowControl)
