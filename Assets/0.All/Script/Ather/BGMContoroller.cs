@@ -31,7 +31,7 @@ public class BGMContoroller : MonoBehaviour
             
         }
 
-        if(_sceneName == "GirlStage1")
+        if(_sceneName == "Floor1")
         {
             if(a[1] != "1")
             {

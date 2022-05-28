@@ -11,7 +11,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [Tooltip("プレイヤーがハイド状態かどうか")] bool _isPlayerHide;
     Image _fadeImage;
     bool _isMind;
-    bool[] _isKey = new bool[1];
+    bool[] _isKey = new bool[4];
     bool _isDead;
 
     /// <summary>シーン移動後のプレイヤーのポジションの番号</summary>
