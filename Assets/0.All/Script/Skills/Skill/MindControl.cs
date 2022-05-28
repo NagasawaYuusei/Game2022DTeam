@@ -74,6 +74,7 @@ public class MindControl : ObjectSelectContoroller
                 _isCurrentControl = true;
             }
             AudioManager.Instance.SEPlay("SE", "sennou", GameObject.FindGameObjectWithTag("Player"), false, 0.3f);
+            GameManager.Instance.ChangeMind();
             InputSystemManager.Instance._isSkill = false;
         }
         else if(InputSystemManager.Instance._isSkill && _isCurrentControl)
@@ -81,6 +82,7 @@ public class MindControl : ObjectSelectContoroller
             _cvc.Follow = GameObject.FindGameObjectWithTag("Player").transform;
             _isCurrentControl = false;
             _enemyRb.velocity = Vector2.zero;
+            GameManager.Instance.ChangeMind();
             InputSystemManager.Instance._isSkill = false;
         }
 

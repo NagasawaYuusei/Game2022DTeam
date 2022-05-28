@@ -15,6 +15,7 @@ public class YellowHead : MonoBehaviour
     [SerializeField, Tooltip("エネミーのスピード")] float _moveSpeed;
     [SerializeField, Tooltip("検知範囲のLayerを表示")] bool _layerDebug;
     Vector2 _dir;
+    [SerializeField] Animator _anim;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class YellowHead : MonoBehaviour
     void Update()
     {
         LayerDebug();
+        Anim();
         if (!_isObjectInCamera.IsObjectInCameraState)
             return;
         Range();
@@ -41,7 +43,13 @@ public class YellowHead : MonoBehaviour
     {
         if (!_layerDebug)
             return;
-        Debug.DrawRay(transform.position, _dir, Color.red, _activeRange);
+        Debug.DrawRay(transform.position, Vector2.right * _activeRange, Color.red);
+        Debug.DrawRay(transform.position, Vector2.left * _activeRange, Color.red);
+    }
+
+    void Anim()
+    {
+        _anim.SetBool("anim", _isActive);
     }
 
     void Range()
@@ -50,9 +58,6 @@ public class YellowHead : MonoBehaviour
         float range = Vector2.Distance(_playerTransform.position, transform.position);
         if (range < _activeRange)
         {
-            _dir = _playerTransform.position - transform.position;
-            _dir = _dir.normalized;
-            _dir.y = 0;
             _isActive = true;
         }
         else
@@ -63,9 +68,20 @@ public class YellowHead : MonoBehaviour
 
     void Active()
     {
-        if (!_isActive && GameManager.Instance.IsPlayerHide)
+        if (!_isActive || GameManager.Instance.IsPlayerHide)
+        {
             return;
-        Vector3 velocity = _dir * _moveSpeed;
-        _rb.AddForce(velocity * Time.deltaTime);
+        }
+        _dir = _playerTransform.position - transform.position;
+        float move = _moveSpeed;
+        if(_dir.x < 0)
+        {
+            move = _moveSpeed * -1;
+        }
+        else
+        {
+            move = _moveSpeed;
+        }
+        _rb.velocity = new Vector2(move, _rb.velocity.y);
     }
 }

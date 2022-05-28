@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8106859825719467518}
   - component: {fileID: 8106859825719467516}
   - component: {fileID: 8106859825719467517}
+  - component: {fileID: -7591207005935656809}
   m_Layer: 0
   m_Name: "\u5B50\u4F9B\u90E8\u5C4B_0070_\u5B50\u4F9B\u90E8\u5C4B-\u306E\u30B3\u30D4\u30FC-71"
   m_TagString: Untagged
@@ -100,8 +101,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 100
+  m_GravityScale: 100
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -142,3 +143,15 @@ PolygonCollider2D:
       - {x: 1.0813234, y: 0.25003314}
       - {x: 0.44104302, y: 0.4302925}
       - {x: -0.0026535392, y: 1.0892549}
+--- !u!114 &-7591207005935656809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106859825719467512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f1a4c54559d7d4f9534bc948dd784f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
