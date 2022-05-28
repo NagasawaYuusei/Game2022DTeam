@@ -11,12 +11,12 @@ public class IsKey : MonoBehaviour
     {
         if(!GameManager.Instance.IsKey[_keyNum])
         {
-            if(_collider != null)
+            if(_collider)
             {
                 _collider.enabled = false;
             }
             
-            if(_sm != null)
+            if(_sm)
             {
                 _sm.enabled = false;
             }
