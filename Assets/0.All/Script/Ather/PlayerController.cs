@@ -131,7 +131,7 @@ public class PlayerController : SingletonMonoBehaviour<PlayerController>
             }
         }
 
-        _anim.SetBool("Dead", _isDeadAnim);
+        //_anim.SetBool("Dead", _isDeadAnim);
         _anim.SetBool("IsGrounded", IsGrounded());
         _anim.SetBool("IsJump", _isJumpAnim);
         _anim.SetBool("Move", _isMoveAnim);
