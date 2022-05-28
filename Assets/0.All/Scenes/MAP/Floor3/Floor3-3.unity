@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 520205132}
   m_Layer: 0
   m_Name: "Light 2D(\u660E\u304B\u308A)"
-  m_TagString: Untagged
+  m_TagString: LightObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3445,13 +3445,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4301104234661010950, guid: b785f5549c3b35e47a74cb05da785dc4,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301104234661010950, guid: b785f5549c3b35e47a74cb05da785dc4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301104234661010950, guid: b785f5549c3b35e47a74cb05da785dc4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301104234661010950, guid: b785f5549c3b35e47a74cb05da785dc4,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.31
+      value: -13.56
       objectReference: {fileID: 0}
     - target: {fileID: 4301104234661010950, guid: b785f5549c3b35e47a74cb05da785dc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.42
+      value: -14.67
       objectReference: {fileID: 0}
     - target: {fileID: 4301104234661010950, guid: b785f5549c3b35e47a74cb05da785dc4,
         type: 3}

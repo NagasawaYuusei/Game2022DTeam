@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4301104234661010968}
   - component: {fileID: 4301104234661010969}
   - component: {fileID: 4301104234661010971}
+  - component: {fileID: 1661646363}
   m_Layer: 0
   m_Name: SkillChangePos - Copy
   m_TagString: Untagged
@@ -127,6 +128,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTagName: Player
   _vec: {x: 0, y: 0.9}
+--- !u!114 &1661646363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4301104234661010951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 1d4acae200000000
+  m_ShapePath:
+  - {x: -1.9507123, y: -3.3735723, z: 0}
+  - {x: -1.6122967, y: 3.6446815, z: 0}
+  - {x: 1.5357151, y: 3.6700006, z: 0}
+  - {x: 1.476429, y: -3.4328573, z: 0}
+  m_ShapePathHash: -1342086861
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 467620
 --- !u!1001 &1019888836341454780
 PrefabInstance:
   m_ObjectHideFlags: 0
