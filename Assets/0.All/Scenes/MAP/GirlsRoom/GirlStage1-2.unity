@@ -155,12 +155,12 @@ MonoBehaviour:
   acfFile: Public/game_taisyo.acf
   cueSheets:
   - name: BGM
-    acbFile: Public/WorkUnit_0/BGM.acb
-    awbFile: Public/WorkUnit_0/BGM.awb
+    acbFile: WorkUnit_0/BGM.acb
+    awbFile: WorkUnit_0/BGM.awb
     loaderStatus: 0
   - name: SE
-    acbFile: Public/WorkUnit_0/SE.acb
-    awbFile: Public/WorkUnit_0/SE.awb
+    acbFile: WorkUnit_0/SE.acb
+    awbFile: WorkUnit_0/SE.awb
     loaderStatus: 0
   dspBusSetting: 
   dontDestroyOnLoad: 0
@@ -2709,7 +2709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playOnStart: 0
+  _playOnStart: 1
   _cueName: syouzyonoheya
   _cueSheet: BGM
   _regionOnStart: {fileID: 0}
