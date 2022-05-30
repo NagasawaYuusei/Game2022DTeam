@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossSwitchController : MonoBehaviour
 {
     Animator _switchAnim;
+    bool _isSounded;
     void Start()
     {
         _switchAnim = GetComponent<Animator>();
@@ -15,6 +16,11 @@ public class BossSwitchController : MonoBehaviour
         if (collision.gameObject.tag == "PsychokinesisObject")
         {
             _switchAnim.SetBool("Switch", true);
+            if (!_isSounded)
+            {
+                AudioManager.Instance.SEPlay("SE", "lever", this.gameObject, false, 2.0f);
+                _isSounded = true;
+            }
         }
     }
 }

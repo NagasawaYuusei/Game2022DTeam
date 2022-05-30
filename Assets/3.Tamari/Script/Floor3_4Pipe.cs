@@ -9,6 +9,15 @@ public class Floor3_4Pipe : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.PlayerDeath();
+            AudioManager.Instance.SEPlay("SE","iron_pipe",this.gameObject,false);
         }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            AudioManager.Instance.SEPlay("SE", "iron_pipe", this.gameObject, false);
+        }
+        
     }
+
+   
+
 }

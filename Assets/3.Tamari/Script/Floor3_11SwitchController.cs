@@ -7,6 +7,7 @@ public class Floor3_11SwitchController : MonoBehaviour
     public static Floor3_11SwitchController Instance { get; private set; }
     [Header("è∞Ç™Ç†Ç¢ÇΩÇ©Ç«Ç§Ç©"), Tooltip("è∞Ç™Ç†Ç¢ÇΩÇ©Ç«Ç§Ç©")] public bool _isPipeOpened;
     Animator _switchAnim;
+    bool _isSounded;
     private void Awake()
     {
         if(Instance == null)
@@ -24,6 +25,11 @@ public class Floor3_11SwitchController : MonoBehaviour
         {
             _isPipeOpened = true;
             _switchAnim.SetBool("Switch", true);
+            if (!_isSounded)
+            {
+                AudioManager.Instance.SEPlay("SE", "lever", this.gameObject, false, 2.0f);
+                _isSounded = true;
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ public class Floor3_7SpawnController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.SEPlay("SE", "siren", this.gameObject, false);
             AppearEnemys();
             _light.color = Color.red;
         }
