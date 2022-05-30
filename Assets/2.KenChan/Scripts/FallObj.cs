@@ -27,6 +27,6 @@ public class FallObj : MonoBehaviour
 
     void PlaySound()
     {
-        _audio.Play();
+        AudioManager.Instance.SEPlay("SE", "drop_paint", this.gameObject, false);
     }
 }
