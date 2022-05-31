@@ -26,6 +26,7 @@ public class SuperJump : SingletonMonoBehaviour<SuperJump>
 
     public void SuperJumpMethod()
     {
+        _playerRb.gravityScale = _flowValue;
         _playerRb.velocity = Vector2.up * PlayerController.Instance.JumpSpeed * _jumpUpValue;
         InputSystemManager.Instance._isJump = false;
     }

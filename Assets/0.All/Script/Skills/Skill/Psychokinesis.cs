@@ -66,6 +66,7 @@ public class Psychokinesis : ObjectSelectContoroller
 
                 _isNowControl = true;
                 AudioManager.Instance.SEPlay("SE", "nenriki", GameObject.FindGameObjectWithTag("Player"), true, 0.04f);
+                GameManager.Instance.ChangeUseSkill();
             }
             InputSystemManager.Instance._isSkill = false;
 
@@ -81,6 +82,7 @@ public class Psychokinesis : ObjectSelectContoroller
             _objectRb.constraints = RigidbodyConstraints2D.FreezePositionX;
             InputSystemManager.Instance._isSkill = false;
             AudioManager.Instance.SEStop(GameObject.FindGameObjectWithTag("Player"));
+            GameManager.Instance.ChangeUseSkill();
         }
 
         if (_isNowControl)
