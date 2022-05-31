@@ -13,6 +13,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     bool _isMind;
     bool[] _isKey = new bool[4];
     bool _isDead;
+    bool _isUseSkill;
 
     /// <summary>シーン移動後のプレイヤーのポジションの番号</summary>
     public int PosNum { get => _posNum; set => _posNum = value; }
@@ -27,6 +28,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public bool IsDead => _isDead;
 
+    public bool IsUseSkill => _isUseSkill;
+
     /// <summary>
     /// プレイヤーのハイド状態を変更する
     /// </summary>
@@ -38,6 +41,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void ChangeMind()
     {
         _isMind = !_isMind;
+    }
+
+    public void ChangeUseSkill()
+    {
+        _isUseSkill = !_isUseSkill;
     }
 
     public void IsKeyChange(int i)
