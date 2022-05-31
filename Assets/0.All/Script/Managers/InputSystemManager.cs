@@ -82,7 +82,7 @@ public class InputSystemManager : SingletonMonoBehaviour<InputSystemManager>
 
     public void SetSkillInput(InputAction.CallbackContext context)
     {
-        if (_cantPlayerInput)
+        if (_cantPlayerInput || GameManager.Instance.IsUseSkill)
         {
             return;
         }
